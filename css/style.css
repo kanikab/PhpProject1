@@ -125,7 +125,7 @@ p{ margin-bottom: 21px; }
 }
 
 .main{
-display: inline-block;
+display: block;
 left: 175px;
 min-height: 600px;
 min-width: 1050px;

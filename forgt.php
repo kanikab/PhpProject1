@@ -1,5 +1,5 @@
 <?php
-    ob_start();
+ob_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,11 +10,8 @@
         <!-- CSS -->
         <link rel="stylesheet" href="css/social-icons.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-       	
 
-        
-        
-        <link rel="Stylesheet" type="text/css" href="js/scroller/css/smoothDivScroll.css" />
+       <link rel="Stylesheet" type="text/css" href="js/scroller/css/smoothDivScroll.css" />
 
         <!--[if IE]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -29,7 +26,7 @@
     </head>
     <body>
 
-        
+
         <!-- Image buttons -->
         <ul id="image-buttons">
             <li id="close-image" class="poshytip" title="Close image" ></li>
@@ -54,11 +51,27 @@
         </div>
         <!-- Navigation -->
         <!-- User Login -->
-        <div>
-            <div class="main1"> 
-                <h2>HI</h2>
-                
+        <div id="mn1" class="main1">
+            <div id="mn"> 
+                <h2>Forgot Your Password </h2> 
+                <p><h4>Enter your Username/E-Mail Id</h4></p>
+                    <form method="post" action="forgt.php">
+                        <p><input type="text" name="username" /> 
+                            <input type="submit" value="Submit" name="Submit" />
+                        </p>   
+                    </form>
             </div>
+            <div id="text1" hidden="true">
+                <h2>An Email has been sent to the registered email. Click here to return to 
+                    <a href ="index.html">Login</a> 
+                    page</h2>
+            </div>
+            <div id="text2" hidden="true">
+                <h2>No user is registered with the email. Click here to <a href="regsister.html">Register.</a> 
+                   
+                    page</h2>
+            </div>
+            
         </div>
         <!-- JS -->
         <!-- jQuery library - Please load it from Google API's -->
@@ -106,29 +119,50 @@
         <!-- ENDS JS -->
 
         <?php
-    
-        //$uname = $_POST["username"];
-        $uname = "bhatia_kanika@ymail.com";
-        $con = mysql_connect("localhost", "root", "");
-        if (!$con) {
-            die('Could not connect: ' . mysql_error());
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            forgot_password();
         }
-        mysql_select_db("297_project", $con);
-       $sql = "select * from userdetails where usernme = '".$uname."'";
-        $result = mysql_query($sql);
-        if (!$result) {
-            echo 'error';
-        } 
-        else {
-        $row = mysql_numrows($result);
-        if($row == 1){
-            echo '1 This is me';
+
+        function forgot_password() {
+            $uname = $_POST["username"];
+            //$uname = "bhatia_kanika@ymail.com";
+            $con = mysql_connect("localhost", "root", "");
+            if (!$con) {
+                die('Could not connect: ' . mysql_error());
+            }
+            mysql_select_db("297_project", $con);
+            $sql = "select * from userdetails where usernme = '" . $uname . "'";
+            $result = mysql_query($sql);
+            if (!$result) {
+                echo 'error';
+            } else {
+                $row = mysql_numrows($result);
+                if ($row == 1) {
+                    test();
+                }
+                else {
+                    nouser();
+                }
+            }
+        }
+        
+        function test(){
+            echo "<script type='text/javascript'>
+             document.getElementById('mn').hidden = true;
+             document.getElementById('text1').hidden = false;
+             document.getElementById('text2').hidden = true;
+             </script>";
            
-          exit;
         }
-        echo '2';
+        
+        
+        function nouser(){
+            echo "<script type='text/javascript'>
+             document.getElementById('mn').hidden = true;
+             document.getElementById('text1').hidden = true;
+             document.getElementById('text2').hidden = false;
+             </script>";
         }
-        echo '3';
         ?>
     </body>
 </html>
