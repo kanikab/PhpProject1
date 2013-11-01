@@ -55,21 +55,21 @@
                     Username <input type="text" name="usrnme" value="" placeholder="example@xyz.com"/>
                     Password <input type="password" name="password" value="" />
                     <p><input type="submit" value="Login" name="login" />
-                        <input type="reset" value="Reset" /></p>
+                        <input type="reset" value="Reset" />  <a href ="forgt.php">Forgot Password</a></p>
                     </p>
                 </form>
             </div> 
                 <div class="main"> 
             <form action="register.php" method="post">
                 <h2>Registration</h2>
-                <p>First Name <br /><input type="text" name="fname" maxlength="35" size="35"/></p>
-                <p>Last Name <br /><input type="text" name="lname" maxlength="35" size="35"/></p>
-                <p>Email <br /><input type="email" name="email" size="35" maxlength="255" /></p>       
-                <p>Password: <br /><input type="password" name="password" maxlength="35" size="35" /></p>
-                <p> Confirm Password: <br /><input type="password" name="cpassword" maxlength="35" size="35" /></p>
+                <p>First Name <br /><input type="text" name="fname" maxlength="35" size="35" required/></p>
+                <p>Last Name <br /><input type="text" name="lname" maxlength="35" size="35"required/></p>
+                <p>Email <br /><input type="email" name="email" size="35" maxlength="255" required/></p>       
+                <p>Password: <br /><input type="password" name="password" maxlength="35" size="35" required/></p>
+                <p> Confirm Password: <br /><input type="password" name="cpassword" maxlength="35" size="35" required/></p>
                 <img src="CaptchaSecurityImages.php" alt="" />
                 Security Code:
-                <input id="security_code" name="security_code" type="text" />
+                <input id="security_code" name="security_code" type="text" required/>
                 <p><input type="submit" value="Register" /></p>
                 <p<input type="reset" value="Reset" /></p>
 
@@ -143,6 +143,7 @@
             $email = $_POST["email"];
             $pwd = $_POST["password"];
             $cpwd = $_POST["cpassword"];
+            if(pwdmatch($pwd, $cpwd)){
             $con = mysql_connect("localhost", "root", "");
             if (!$con) {
                 die('Could not connect: ' . mysql_error());
@@ -164,5 +165,20 @@
                    $result = mysql_query($sql);
                 }
             }
+        }
+        return false;
+        }
+        function pwdmatch($pwd, $cpwd)
+        {
+            if($pwd !== $cpwd)
+            {
+                echo "<script type='text/javascript'>
+                    alert(\"Password donot match\");
+                    document.getElementById('password').value = \"\";
+                    document.getElementById('cpassword').value = \"\";
+             </script>";
+                return false;
+            }
+            return true;
         }
         ?>
