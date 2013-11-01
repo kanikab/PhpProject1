@@ -28,7 +28,12 @@
         $row = mysql_numrows($result);
         if($row == 1){
             echo '1';
-            header('Location: '.$page);
+            $message = "You have requested for forgot password. ";
+            $message .= "Click the given link to reset your password.";
+            $url = "http://kanikabhatia-photos.com/Team_File_Share/";
+            $message .= $url;
+
+            mail($uname,"Forgot Password",$message);
             //header("Location: $index.html");
           exit;
         }
