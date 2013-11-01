@@ -5,7 +5,7 @@
         <title></title>
     </head>
     <body>
-        Hi
+       
         <?php
        $uname = $_POST["username"];
        $pwd = $_POST["password"];
