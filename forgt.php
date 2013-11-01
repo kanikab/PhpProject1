@@ -67,9 +67,9 @@ ob_start();
                     page</h2>
             </div>
             <div id="text2" hidden="true">
-                <h2>No user is registered with the email. Click here to <a href="regsister.html">Register.</a> 
+                <h2>No user is registered with the email. Click here to <a href="register.html">Register</a> 
                    
-                    page</h2>
+                    page.</h2>
             </div>
             
         </div>

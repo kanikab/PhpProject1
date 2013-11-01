@@ -2,17 +2,12 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Elliot | A showcase template</title>
+        <title>Registration</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="css/social-icons.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-        <!--[if IE 7]>
-                <link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_url') ?>/css/ie7-hacks.css" />
-        <![endif]-->
-        <!--[if IE 8]>
-                <link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_url') ?>/css/ie8-hacks.css" />
-        <![endif]-->
+        
         <!-- ENDS CSS -->	
 
         <link rel="Stylesheet" type="text/css" href="js/scroller/css/smoothDivScroll.css" />
@@ -40,9 +35,8 @@
         <!-- Navigation -->
         <div id="nav-wrapper">
             <ul id="nav" class="sf-menu">
-                <li class="logo"><a href="index.html"><img src="img/logo.png" alt="Best View" id="logo" ></a></li>
                 <li class="current-menu-item"><a href="index.html">Home</a></li>
-                <li class="current-menu-item"><a href="register.html">Register</a></li>
+                <li class="current-menu-item"><a href="register.php">Register</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li class="social">
                     <!-- Social -->
@@ -66,7 +60,7 @@
                 </form>
             </div> 
                 <div class="main"> 
-            <form action="" method="post">
+            <form action="register.php" method="post">
                 <h2>Registration</h2>
                 <p>First Name <br /><input type="text" name="fname" maxlength="35" size="35"/></p>
                 <p>Last Name <br /><input type="text" name="lname" maxlength="35" size="35"/></p>
@@ -80,7 +74,9 @@
                 <p<input type="reset" value="Reset" /></p>
 
             </form>
+                    <div id="reg" hidden="true"><h3>User is already register. Click on <a href="forgt.php">Forgot Password</a>.</h3></div>
                 </div>
+            
         </div>
 
 
@@ -135,3 +131,38 @@
 
     </body>
 </html>
+
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            registration();
+        }
+
+        function registration() {
+            $fname = $_POST["fname"];
+            $lname = $_POST["lname"];
+            $email = $_POST["email"];
+            $pwd = $_POST["password"];
+            $cpwd = $_POST["cpassword"];
+            $con = mysql_connect("localhost", "root", "");
+            if (!$con) {
+                die('Could not connect: ' . mysql_error());
+            }
+            mysql_select_db("297_project", $con);
+            $sql = "select * from userdetails where usernme = '" . $email . "'";
+            $result = mysql_query($sql);
+            if (!$result) {
+                echo 'error';
+            } else {
+                $row = mysql_numrows($result);
+                if ($row >= 1) {
+                    echo "<script type='text/javascript'>
+             document.getElementById('reg').hidden = false;
+             </script>";
+                }
+                else {
+                   $sql="INSERT userdetails VALUES ('".$email."','".$pwd."','".$fname."','".$lname."')";
+                   $result = mysql_query($sql);
+                }
+            }
+        }
+        ?>
