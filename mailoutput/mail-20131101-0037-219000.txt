@@ -1,0 +1,4 @@
+To: bhatia_kanika@ymail.com
+Subject: Forgot Password
+
+You have requested for forgot password. Click the given link to reset your password.C:/xampp/htdocs/PhpProject1/pwdreset.html
