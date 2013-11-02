@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <!DOCTYPE  html>
 <html>
     <head>
@@ -35,7 +38,7 @@
         <!-- Navigation -->
         <div id="nav-wrapper">
             <ul id="nav" class="sf-menu">
-                <li class="current-menu-item"><a href="index.html">Home</a></li>
+                <li class="current-menu-item"><a href="login.php">Home</a></li>
                 <li class="current-menu-item"><a href="register.php">Register</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li class="social">
@@ -163,6 +166,9 @@
                 else {
                    $sql="INSERT userdetails VALUES ('".$email."','".$pwd."','".$fname."','".$lname."')";
                    $result = mysql_query($sql);
+                   header('Location: login.php');
+                    exit();
+
                 }
             }
         }
