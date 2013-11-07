@@ -35,16 +35,27 @@
   <script type="text/javascript" src="http://www.google.com/jsapi?hl=en&amp;key=ABQIAAAAwbkbZLyhsmTCWXbTcjbgbRSzHs7K5SvaUdm8ua-Xxy_-2dYwMxQMhnagaawTo7L1FE1-amhuQxIlXw"></script>
   <script type="text/javascript">
   /* <![CDATA[ */
-  var ge;
-  var placemark;
-  
-  google.load("earth", "1");
+
+
+            google.load("earth", "1");
 
   function init() {
     google.earth.createInstance('map3d', initCB, failureCB);
   }
   
   function initCB(instance) {
+                var ge;
+                var placemark;
+                var cur_placemark;
+                var cur_lat;
+                var cur_lon;
+                /*
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(showPosition);
+    }
+    else{x.innerHTML="Geolocation is not supported by this browser.";}
+  */
     ge = instance;
     ge.getWindow().setVisibility(true);
     
@@ -57,20 +68,7 @@
 
     // create the placemark
     placemark = ge.createPlacemark('');
-    
-    var point = ge.createPoint('');
-    point.setLatitude(37);
-    point.setLongitude(-122);
-    placemark.setGeometry(point);
-    
-    // add the placemark to the earth DOM
-    ge.getFeatures().appendChild(placemark);
-    
-    
-	//second placemark
-	// Create the placemark.
-	var placemark2 = ge.createPlacemark('');
-	placemark2.setName("placemark");
+                placemark.setName("placemark");
 
 	// Define a custom icon.
 	var icon = ge.createIcon('');
@@ -78,81 +76,106 @@
 	var style = ge.createStyle('');
 	style.getIconStyle().setIcon(icon);
 	style.getIconStyle().setScale(15.0);
-	placemark2.setStyleSelector(style);
+                placemark.setStyleSelector(style);
+                //cur_placemark.setStyleSelector(style);
 
-	// Set the placemark's location.  
-	var point2 = ge.createPoint('');
-	point2.setLatitude(12.345);
-	point2.setLongitude(54.321);
-	placemark2.setGeometry(point2);
+                // Set the placemark's location.  
+                //cur_placemark.setGeometry(cur_pos);
+                var point = ge.createPoint('');
+                point.setLatitude(12);
+                point.setLongitude(57);
+                placemark.setGeometry(point);
 
-	// Add the placemark to Earth.
-	ge.getFeatures().appendChild(placemark2);
-	
-	//center the current location
-	// Create a new LookAt.
-	var lookAt = ge.createLookAt('');
+                // Add the placemark to Earth.
+                //ge.getFeatures().appendChild(cur_placemark);
+                ge.getFeatures().appendChild(placemark);
 
-	// Set the position values.
-	lookAt.setLatitude(12.345);
-	lookAt.setLongitude(54.321);
-	lookAt.setRange(10000000.0); //default is 0.0
-	ge.getView().setAbstractView(lookAt);
-	
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
 
-    
-    // listen to the click event
-    google.earth.addEventListener(placemark, 'click', function(event) {
-      var text = 'Click:';
-    
-      function addToMessage(append1, append2) { 
-       text += ' ' + append1 + ': ' + append2 + '\n' ;
-      }
-    
-      addToMessage('target type', event.getTarget().getType());
-      addToMessage('currentTarget type', 
-                   event.getCurrentTarget().getType());
-      addToMessage('button', event.getButton());
-      addToMessage('clientX', event.getClientX());
-      addToMessage('clientY', event.getClientY());
-      addToMessage('screenX', event.getScreenX());
-      addToMessage('screenY', event.getScreenY());
-      addToMessage('latitude', event.getLatitude());
-      addToMessage('longitude', event.getLongitude());
-      addToMessage('altitude', event.getAltitude());
-      addToMessage('didHitGlobe', event.getDidHitGlobe());
-      addToMessage('altKey', event.getAltKey());
-      addToMessage('ctrlKey', event.getCtrlKey());
-      addToMessage('shiftKey', event.getShiftKey());
-      addToMessage('timeStamp', event.getTimeStamp());
-    
-      // Prevent default balloon from popping up for marker placemarks
-      event.preventDefault(); 
-    
-      // wrap alerts in API callbacks and event handlers
-      // in a setTimeout to prevent deadlock in some browsers
-      setTimeout(function() {
-        alert(text);
-      }, 0);
-    });
-    
-    document.getElementById('installed-plugin-version').innerHTML =
-      ge.getPluginVersion().toString();
-  }
-  
-  function failureCB(errorCode) {
-  }
-  
-</script>
-<style>
-.google_earth {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    z-index: 10;  
-}
-</style>
+                    function(position) {
+                        cur_lat = position.coords.latitude;
+                        cur_lon = position.coords.longitude;
+
+                        //create placemark
+                        cur_placemark = ge.createPlacemark('');
+                        cur_placemark.setName("You are here");
+                        cur_placemark.setStyleSelector(style);
+                        var cur_pos = ge.createPoint('');
+                        cur_pos.setLatitude(cur_lat);
+                        cur_pos.setLongitude(cur_lon);
+                        cur_placemark.setGeometry(cur_pos);
+                        ge.getFeatures().appendChild(cur_placemark);
+                        google.earth.addEventListener(cur_placemark, 'click', function(event) {
+                    alert("here is the click function");
+
+                    // Prevent default balloon from popping up for marker placemarks
+                    event.preventDefault();
+
+                    // wrap alerts in API callbacks and event handlers
+                    // in a setTimeout to prevent deadlock in some browsers
+                    setTimeout(function() {
+                        alert(text);
+                    }, 0);
+                });
+                        // Create a new LookAt.
+                        var lookAt = ge.createLookAt('');
+
+                        // Set the position values.
+                        lookAt.setLatitude(cur_lat);
+                        lookAt.setLongitude(cur_lon);
+                        lookAt.setRange(15000000.0);
+                        ge.getView().setAbstractView(lookAt);
+                    });
+                } else {
+
+                }
+
+
+
+                // listen to the click event
+                google.earth.addEventListener(placemark, 'click', function(event) {
+                    alert("here is the click function");
+
+                    // Prevent default balloon from popping up for marker placemarks
+                    event.preventDefault();
+
+                    // wrap alerts in API callbacks and event handlers
+                    // in a setTimeout to prevent deadlock in some browsers
+                    setTimeout(function() {
+                        alert(text);
+                    }, 0);
+                });
+                
+
+                //cur_placemark click function
+                
+
+
+
+
+
+
+                document.getElementById('installed-plugin-version').innerHTML = ge.getPluginVersion().toString();
+            }
+
+            function failureCB(errorCode) {}
+
+
+            function showPosition(position) {
+                cur_lat = position.coords.latitude;
+                cur_lon = position.coords.longitude;
+            }
+        </script>
+        <style>
+            .google_earth {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                z-index: 10;
+            }
+        </style>
     </head>
     <body onload="if(window.prettyPrint)prettyPrint();init();">
 

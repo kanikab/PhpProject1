@@ -78,6 +78,9 @@
             </div>
         </div>
         <!-- ENDS Scroll -->
+        
+        
+        <div id = "audio" class = "audio_control"> </div>
 
 
 
@@ -128,7 +131,32 @@
         <script  src="js/backstretch.js"></script>
         <script  src="js/custom.js"></script>
         <!-- ENDS JS -->
-
+ <!-- audio control -->
+		<link rel="stylesheet" type="text/css" href="../plugin/css/style.css">
+    	<link rel="stylesheet" type="text/css" href="css/audio.css">
+    	<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
+    	<script type="text/javascript" src="../plugin/jquery-jplayer/jquery.jplayer.js"></script>
+    	<script type="text/javascript" src="../plugin/ttw-music-player-min.js"></script>
+    	<script type="text/javascript" src="js/myplaylist.js"></script>
+    	<script type="text/javascript">
+        $(document).ready(function(){
+            
+            $('.audio_control').ttwMusicPlayer(myPlaylist, {
+                autoplay:true, 
+                jPlayer:{
+                    swfPath:'../plugin/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
+                }
+            });
+        });
+    	</script>
+		<style>
+  		#audio {
+    		position: fixed;
+    		top:30px;
+    		left: 0;
+    		z-index: 10000000000;
+  		}
+		</style>
     </body>
 </html>
 
