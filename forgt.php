@@ -37,8 +37,8 @@ ob_start();
         <!-- Navigation -->
         <div id="nav-wrapper">
             <ul id="nav" class="sf-menu">
-                <li class="current-menu-item"><a href="index.html">Home</a></li>
-                <li class="current-menu-item"><a href="register.html">Register</a></li>
+                <li class="current-menu-item"><a href="login.php">Home</a></li>
+                <li class="current-menu-item"><a href="register.php">Register</a></li>
                 <li class="current-menu-item"><a href="Place_Mark.html">Map</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li class="social">
@@ -63,11 +63,11 @@ ob_start();
             </div>
             <div id="text1" hidden="true">
                 <h2>An Email has been sent to the registered email. Click here to return to 
-                    <a href ="index.html">Login</a> 
+                    <a href ="login.php">Login</a> 
                     page</h2>
             </div>
             <div id="text2" hidden="true">
-                <h2>No user is registered with the email. Click here to <a href="register.html">Register</a> 
+                <h2>No user is registered with the email. Click here to <a href="register.php">Register</a> 
                    
                     page.</h2>
             </div>
