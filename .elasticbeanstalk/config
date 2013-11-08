@@ -1,0 +1,4 @@
+[global]
+ApplicationName=BV
+DevToolsEndpoint=git.elasticbeanstalk.us-east-1.amazonaws.com
+Region=us-east-1
