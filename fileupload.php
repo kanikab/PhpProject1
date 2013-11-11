@@ -133,7 +133,7 @@ function fileupload() {
         }
         else {
              echo "<script type='text/javascript'>
-             alert(\"Hi \");
+             alert(\"File Uploaded \");
              </script>";
         }
     }
