@@ -151,6 +151,21 @@ border: 1px solid #ccc;
 padding: 15px;
 }
 
+
+.main2{
+display: block;
+top: 250px;
+left: 175px;
+min-height: 600px;
+min-width: 1050px;
+overflow: hidden;
+position: relative;
+float: left;    
+background: #fdfdfd;
+border: 1px solid #ccc;
+padding: 15px;
+}
+
 /* PAGE WRAP ------------------------------------------------------------*/
 
 #page-wrap { 

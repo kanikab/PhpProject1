@@ -1,17 +1,15 @@
-<?php
-ob_start();
-?>
-<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Best View</title>
+        <title>Registration</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="css/social-icons.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
 
-       <link rel="Stylesheet" type="text/css" href="js/scroller/css/smoothDivScroll.css" />
+        <!-- ENDS CSS -->	
+
+        <link rel="Stylesheet" type="text/css" href="js/scroller/css/smoothDivScroll.css" />
 
         <!--[if IE]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -26,7 +24,6 @@ ob_start();
     </head>
     <body>
 
-
         <!-- Image buttons -->
         <ul id="image-buttons">
             <li id="close-image" class="poshytip" title="Close image" ></li>
@@ -39,7 +36,6 @@ ob_start();
             <ul id="nav" class="sf-menu">
                 <li class="current-menu-item"><a href="login.php">Home</a></li>
                 <li class="current-menu-item"><a href="register.php">Register</a></li>
-                <li class="current-menu-item"><a href="Place_Mark.html">Map</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li class="social">
                     <!-- Social -->
@@ -50,29 +46,16 @@ ob_start();
             </ul>
         </div>
         <!-- Navigation -->
-        <!-- User Login -->
-        <div id="mn1" class="main1">
-            <div id="mn"> 
-                <h2>Forgot Your Password </h2> 
-                <p><h4>Enter your Username/E-Mail Id</h4></p>
-                    <form method="post" action="forgt.php">
-                        <p><input type="text" name="username" /> 
-                            <input type="submit" value="Submit" name="Submit" />
-                        </p>   
-                    </form>
+        <div>
+            <div class="main2"> 
+                <form action="fileupload.php" method="post" enctype="multipart/form-data">
+                    <label for="file">Filename:</label>
+                    <input type="file" name="file" id="file"><br>
+                    <input type="submit" name="submit" value="Submit">
+                </form>
             </div>
-            <div id="text1" hidden="true">
-                <h2>An Email has been sent to the registered email. Click here to return to 
-                    <a href ="login.php">Login</a> 
-                    page</h2>
-            </div>
-            <div id="text2" hidden="true">
-                <h2>No user is registered with the email. Click here to <a href="register.php">Register</a> 
-                   
-                    page.</h2>
-            </div>
-            
         </div>
+
         <!-- JS -->
         <!-- jQuery library - Please load it from Google API's -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" ></script>
@@ -118,51 +101,30 @@ ob_start();
         <script  src="js/custom.js"></script>
         <!-- ENDS JS -->
 
-        <?php
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            forgot_password();
-        }
-
-        function forgot_password() {
-            $uname = $_POST["username"];
-            //$uname = "bhatia_kanika@ymail.com";
-            $con = mysql_connect("localhost", "root", "");
-            if (!$con) {
-                die('Could not connect: ' . mysql_error());
-            }
-            mysql_select_db("297_project", $con);
-            $sql = "select * from userdetails where usernme = '" . $uname . "'";
-            $result = mysql_query($sql);
-            if (!$result) {
-                echo 'error';
-            } else {
-                $row = mysql_numrows($result);
-                if ($row == 1) {
-                    test();
-                }
-                else {
-                    nouser();
-                }
-            }
-        }
-        
-        function test(){
-            echo "<script type='text/javascript'>
-             document.getElementById('mn').hidden = true;
-             document.getElementById('text1').hidden = false;
-             document.getElementById('text2').hidden = true;
-             </script>";
-           
-        }
-        
-        
-        function nouser(){
-            echo "<script type='text/javascript'>
-             document.getElementById('mn').hidden = true;
-             document.getElementById('text1').hidden = true;
-             document.getElementById('text2').hidden = false;
-             </script>";
-        }
-        ?>
     </body>
 </html>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    fileupload();
+}
+
+function fileupload() {
+    $con = mysql_connect("localhost", "root", "");
+    if (!$con) {
+        die('Could not connect: ' . mysql_error());
+    }
+    mysql_select_db("297_project", $con);
+    if ($_FILES["file"]["error"] > 0) {
+        echo "Error: " . $_FILES["file"]["error"] . "<br>";
+    } else {
+        $name = $_FILES["file"]["name"];
+        $type = $_FILES["file"]["type"];
+        $size = ($_FILES["file"]["size"] / 1024) . "kB";
+        $tmp = $_FILES["file"]["tmp_name"];
+        $fp = fopen($tmp, 'r');
+        $content = fread($fp, $fileSize);
+        $content = addslashes($content);
+        fclose($fp);
+    }
+}
+?>
