@@ -138,7 +138,12 @@ ob_start();
             } else {
                 $row = mysql_numrows($result);
                 if ($row == 1) {
-                    test();
+                    resetpwd();
+                    $msg = "Password reset has been requested. Please click on below link to reset the password";
+                    $url = "http://bestview.elasticbeanstalk.com/";
+                    $url .= "pwd_reset.php?username=$uname";
+                    $msg .= $url;
+                    mail($uname,"Password Reset",$msg);
                 }
                 else {
                     nouser();
@@ -146,7 +151,7 @@ ob_start();
             }
         }
         
-        function test(){
+        function resetpwd(){
             echo "<script type='text/javascript'>
              document.getElementById('mn').hidden = true;
              document.getElementById('text1').hidden = false;

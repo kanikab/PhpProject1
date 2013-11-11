@@ -118,16 +118,17 @@ ob_start();
         <!-- ENDS JS -->
 
         <?php
+        $uname = $_POST["username"];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            reset_password();
+            reset_password($uname);
         }
 
-        function reset_password() {
+        function reset_password($uname) {
             //$uname = $_POST["username"];
             $pwd = $_POST["pwd"];
             $cpwd = $_POST["cpwd"];
             if (chkpwd($pwd, $cpwd)) {
-                $uname = "bhatia_kanika@ymail.com";
+                //$uname = "bhatia_kanika@ymail.com";
                 $con = mysql_connect("localhost", "root", "");
                 if (!$con) {
                     die('Could not connect: ' . mysql_error());
