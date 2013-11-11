@@ -47,7 +47,7 @@
         </div>
         <!-- Navigation -->
         <div>
-            <div class="main2"> 
+            <div class="main1"> 
                 <form action="fileupload.php" method="post" enctype="multipart/form-data">
                     <label for="file">Filename:</label>
                     <input type="file" name="file" id="file"><br>
