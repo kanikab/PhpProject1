@@ -122,7 +122,7 @@ function fileupload() {
         $size = ($_FILES["file"]["size"] / 1024) . "kB";
         $tmp = $_FILES["file"]["tmp_name"];
         $fp = fopen($tmp, 'r');
-        $content = fread($fp, $fileSize);
+        $content = fread($fp, $size);
         $content = addslashes($content);
         fclose($fp);
     }
