@@ -117,14 +117,25 @@ function fileupload() {
     if ($_FILES["file"]["error"] > 0) {
         echo "Error: " . $_FILES["file"]["error"] . "<br>";
     } else {
+        $location = "SF";
+        $date = date('m/d/Y h:i:s', time());
         $name = $_FILES["file"]["name"];
         $type = $_FILES["file"]["type"];
         $size = ($_FILES["file"]["size"] / 1024) . "kB";
         $tmp = $_FILES["file"]["tmp_name"];
         $fp = fopen($tmp, 'r');
         $content = fread($fp, $size);
-        $content = addslashes($content);
+        $content1 = addslashes($content);
         fclose($fp);
+        $sql = "INSERT into content VALUES ('" . $location . "','" . $name . "','" . $date . "','" . $content1 . "','" . $type . "','" . $size . "')";
+        if (!mysql_query($sql, $con)) {
+            die('Error: ' . mysql_error());
+        }
+        else {
+             echo "<script type='text/javascript'>
+             alert(\"Hi \");
+             </script>";
+        }
     }
 }
 ?>
