@@ -57,7 +57,7 @@ ob_start();
                 <center>
                     Password Requirement:
                     <br></br>
-                    Minimum 7 characters and Maximum 15 characters.<br></br>
+                    Minimum 7 characters and Maximum 20 characters.<br></br>
                     Atleast 1 uppercase alphabet, 1 digit and special characters
                     <p><form method="post" action="pwd_reset.php">
                         <p>New Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="pwd" required/> </p>

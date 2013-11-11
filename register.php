@@ -184,14 +184,28 @@ function registration() {
 }
 
 function pwdmatch($pwd, $cpwd) {
-    if ($pwd !== $cpwd) {
-        echo "<script type='text/javascript'>
-                    alert(\"Password donot match\");
-                    document.getElementById('password').value = \"\";
-                    document.getElementById('cpassword').value = \"\";
+   $clen = strlen($cpwd);
+            $len = strlen($pwd);
+            If ($len < 7 || $len > 20 || $clen < 7 || $clen > 20) {
+                echo "<script type='text/javascript'>
+             alert(\"Password length less than 7 characters or greater than 20 characters\");
              </script>";
-        return false;
-    }
-    return true;
-}
+                return false;
+            }
+            if ((preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!&]).{7,20}/", $pwd)) && (preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!&]).{7,20}/", $cpwd))) {
+                if ($pwd == $cpwd) {
+                    return true;
+                } else {
+                    echo "<script type='text/javascript'>
+             alert(\"Password Doesnot Match\");
+             </script>";
+                    return false;
+                }
+            } else {
+                echo "<script type='text/javascript'>
+             alert(\"Password doesnot meet the requirement\");
+             </script>";
+                return false;
+            }
+        }
 ?>
