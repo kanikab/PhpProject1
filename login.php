@@ -1,3 +1,7 @@
+<?php
+session_start();
+ob_start();
+?>
 <!DOCTYPE  html>
 <html>
     <head>
@@ -184,7 +188,11 @@ function login() {
              document.getElementById('error').hidden = false;
              </script>";
     }
+    else{
+        
+$_SESSION["username"]= $uname;
+ header('Location: home.php');
+exit();
+    }
 }
-
-
 ?>
