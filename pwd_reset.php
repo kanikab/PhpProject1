@@ -11,7 +11,7 @@ ob_start();
         <link rel="stylesheet" href="css/social-icons.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
 
-       <link rel="Stylesheet" type="text/css" href="js/scroller/css/smoothDivScroll.css" />
+        <link rel="Stylesheet" type="text/css" href="js/scroller/css/smoothDivScroll.css" />
 
         <!--[if IE]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -37,9 +37,9 @@ ob_start();
         <!-- Navigation -->
         <div id="nav-wrapper">
             <ul id="nav" class="sf-menu">
-                <li class="current-menu-item"><a href="globe.html">Globe</a></li>
                 <li class="current-menu-item"><a href="login.php">Home</a></li>
                 <li class="current-menu-item"><a href="register.php">Register</a></li>
+                <li class="current-menu-item"><a href="Place_Mark.html">Map</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li class="social">
                     <!-- Social -->
@@ -53,25 +53,24 @@ ob_start();
         <!-- User Login -->
         <div id="mn1" class="main1">
             <div id="mn"> 
-                <h2>Forgot Your Password </h2> 
-                <p><h4>Enter your Username/E-Mail Id</h4></p>
-                    <form method="post" action="forgt.php">
-                        <p><input type="text" name="username" /> 
-                            <input type="submit" value="Submit" name="Submit" />
-                        </p>   
+                <h2>Password Reset</h2> 
+                <center>
+                    Password Requirement:
+                    <br></br>
+                    Minimum 7 characters and Maximum 20 characters.<br></br>
+                    Atleast 1 uppercase alphabet, 1 digit and special characters
+                    <p><form method="post" action="pwd_reset.php">
+                        <p>New Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="pwd" required/> </p>
+                        <p>Confirm Password   &nbsp;&nbsp;&nbsp;<input type="password" name="cpwd" required/> </p>
+                        <p> <input type="submit" value="Submit" name="Submit" />
+                            <input type="reset" value="Reset" name="Reset" />
+                        </p>
                     </form>
+                    </p>
+                </center>
             </div>
-            <div id="text1" hidden="true">
-                <h2>An Email has been sent to the registered email. Click here to return to 
-                    <a href ="login.php">Login</a> 
-                    page</h2>
-            </div>
-            <div id="text2" hidden="true">
-                <h2>No user is registered with the email. Click here to <a href="register.php">Register</a> 
-                   
-                    page.</h2>
-            </div>
-            
+
+
         </div>
         <!-- JS -->
         <!-- jQuery library - Please load it from Google API's -->
@@ -119,54 +118,62 @@ ob_start();
         <!-- ENDS JS -->
 
         <?php
+        $uname = $_POST["username"];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            forgot_password();
+            reset_password($uname);
         }
 
-        function forgot_password() {
-            $uname = $_POST["username"];
-            //$uname = "bhatia_kanika@ymail.com";
-            $con = mysql_connect("localhost", "root", "");
-            if (!$con) {
-                die('Could not connect: ' . mysql_error());
+        function reset_password($uname) {
+            //$uname = $_POST["username"];
+            $pwd = $_POST["pwd"];
+            $cpwd = $_POST["cpwd"];
+            if (chkpwd($pwd, $cpwd)) {
+                //$uname = "bhatia_kanika@ymail.com";
+                $con = mysql_connect("localhost", "root", "");
+                if (!$con) {
+                    die('Could not connect: ' . mysql_error());
+                }
+                mysql_select_db("297_project", $con);
+                $sql = "UPDATE userdetails SET password='" . $pwd . "'where usernme = '" . $uname . "'";
+                $result = mysql_query($sql);
+                if (!$result) {
+                    echo 'error';
+                } else {
+                    $row = mysql_affected_rows();
+                    if ($row == 1) {
+                        echo "<script type='text/javascript'>
+             alert(\"Password Changed \n You will be redirected to login page.\");
+             </script>";
+                        header('Location: login.php');
+                    }
+                }
             }
-            mysql_select_db("297_project", $con);
-            $sql = "select * from userdetails where usernme = '" . $uname . "'";
-            $result = mysql_query($sql);
-            if (!$result) {
-                echo 'error';
+        }
+
+        function chkpwd($pwd, $cpwd) {
+            $clen = strlen($cpwd);
+            $len = strlen($pwd);
+            If ($len < 7 || $len > 20 || $clen < 7 || $clen > 20) {
+                echo "<script type='text/javascript'>
+             alert(\"Password length less than 7 characters or greater than 20 characters\");
+             </script>";
+                return false;
+            }
+            if ((preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!&]).{7,20}/", $pwd)) && (preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!&]).{7,20}/", $cpwd))) {
+                if ($pwd == $cpwd) {
+                    return true;
+                } else {
+                    echo "<script type='text/javascript'>
+             alert(\"Password Doesnot Match\");
+             </script>";
+                    return false;
+                }
             } else {
-                $row = mysql_numrows($result);
-                if ($row == 1) {
-                    resetpwd();
-                    $msg = "Password reset has been requested. Please click on below link to reset the password";
-                    $url = "http://bestview.elasticbeanstalk.com/";
-                    $url .= "pwd_reset.php?username=$uname";
-                    $msg .= $url;
-                    mail($uname,"Password Reset",$msg);
-                }
-                else {
-                    nouser();
-                }
+                echo "<script type='text/javascript'>
+             alert(\"Password doesnot meet the requirement\");
+             </script>";
+                return false;
             }
-        }
-        
-        function resetpwd(){
-            echo "<script type='text/javascript'>
-             document.getElementById('mn').hidden = true;
-             document.getElementById('text1').hidden = false;
-             document.getElementById('text2').hidden = true;
-             </script>";
-           
-        }
-        
-        
-        function nouser(){
-            echo "<script type='text/javascript'>
-             document.getElementById('mn').hidden = true;
-             document.getElementById('text1').hidden = true;
-             document.getElementById('text2').hidden = false;
-             </script>";
         }
         ?>
     </body>

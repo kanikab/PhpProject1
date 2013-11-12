@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Tab Tab</title>
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cabin|Cardo" />
+<link rel="stylesheet" href="tab-tab.css" />
+<style>
+
+body {
+width:700px;
+margin:50px auto 50px auto;
+font-family:Verdana,sans-serif;
+font-size:15px;
+background-color:#D9F7FF;
+background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAG0lEQVQYlWNgGDiw+f3//zBMUCFRplHLZWQCANWvEiETqp5pAAAAAElFTkSuQmCC);
+}
+
+form {
+width:100%;
+margin:0 0 50px 0;
+text-align:right;
+}
+
+a img {
+border:none;
+}
+
+</style>
+</head>
+<body>
+
+
+<form>
+
+<select id="position">
+<option>flex</option>
+<option>left</option>
+<option>center</option>
+<option>right</option>
+</select>
+
+<select id="color">
+<option>apple green</option>
+<option>banana yellow</option>
+<option>carrot orange</option>
+<option>cerise</option>
+<option>eggplant</option>
+<option>melon</option>
+<option>olive</option>
+<option>peach</option>
+<option>pear</option>
+<option>tomato</option>
+</select>
+
+</form>
+
+
+<article class="tabtab bananayellow flex">
+
+<nav>
+
+<ul>
+<li><a href="#tab1">intro</a></li>
+<li><a href="#tab2">features</a></li>
+<li><a href="#tab3">child element styling</a></li>
+<li><a href="#tab4">specifications</a></li>
+</ul>
+
+</nav>
+
+
+<section id="tab1">
+
+<h1>Hi there!</h1>
+
+<p>This is Tab Tab, HTML5 + CSS3 tabs.</p>
+
+<p>Dedicated to all human beings who consciously choose not to harm animals, directly or indirectly, each of the ten color schemes is the color of either a fruit or a vegetable.</p>
+
+<blockquote>
+
+<p>That which to us is merely an evening meal,<br />to them is life itself.</p>
+
+<cite>T. Casey Brennan</cite>
+
+</blockquote>
+
+</section>
+
+
+<section id="tab2">
+
+<h1>Features</h1>
+
+<ul>
+<li>HTML5 semantics: article, nav and section elements</li>
+<li>CSS3 styling</li>
+<li>jQuery plugin for extended functionality</li>
+<li>10 color schemes</li>
+<li>4 tab positions</li>
+<li>child element styling</li>
+</ul>
+
+<a href="http://www.w3.org/html/logo/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics-storage.png" alt="HTML5 Powered with CSS3 / Styling, Semantics, and Offline &amp; Storage" title="HTML5 Powered with CSS3 / Styling, Semantics, and Offline &amp; Storage"></a>
+
+</section>
+
+
+<section id="tab3">
+
+<h1>Heading 1</h1>
+
+<h2>Heading 2</h2>
+
+<p>Paragraph</p>
+
+<ul>
+<li>unordered list-item</li>
+<li>unordered list-item</li>
+<li>unordered list-item</li>
+</ul>
+
+<ol>
+<li>ordered list-item</li>
+<li>ordered list-item</li>
+<li>ordered list-item</li>
+</ol>
+
+<blockquote>
+
+<p>Blockquote</p>
+
+<cite>Cite</cite>
+
+</blockquote>
+
+</section>
+
+
+<section id="tab4">
+
+<h1>Specifications</h1>
+
+
+<h2>Dependencies</h2>
+
+<ul>
+<li>jQuery 1.5</li>
+<li><a href="https://github.com/doctyper/flexie">flexie</a></li>
+</ul>
+
+
+<h2>Browser support</h2>
+
+<ul>
+<li>Firefox</li>
+<li>Chrome</li>
+<li>Safari</li>
+<li>Opera</li>
+<li>IE8</li>
+</ul>
+
+<p>IE9 has a weird problem which prevents flexie.js from doing its work.</p>
+
+
+<h2>Dimensions</h2>
+
+<ul>
+<li>width: inherit</li>
+<li>height: inherit</li>
+</ul>
+
+
+<h2>Positions</h2>
+
+<ol>
+<li>left</li>
+<li>center (default)</li>
+<li>right</li>
+<li>flex</li>
+</ol>
+
+
+<h2>Colors</h2>
+
+<ol>
+<li>apple green</li>
+<li>banana yellow</li>
+<li>carrot orange</li>
+<li>cerise</li>
+<li>eggplant</li>
+<li>melon</li>
+<li>olive</li>
+<li>peach</li>
+<li>pear</li>
+<li>tomato</li>
+</ol>
+
+
+<h2>Typography</h2>
+
+<ul>
+<li>font: <a href="http://www.google.com/webfonts/family?family=Cabin&subset=latin">Cabin</a> &amp; <a href="http://www.google.com/webfonts/family?family=Cardo&subset=latin">Cardo</a></li>
+<li>font size: 15px - 27px</li>
+<li>line height: 1.5</li>
+</ul>
+
+</section>
+
+</article>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.js"></script>
+<script src="flexie.js"></script>
+<script src="jquery.tab-tab.js"></script>
+
+<script>
+
+$(document).ready(function() {
+	
+	// this is all you need to initialize the plugin
+	$('.tabtab').tabTab();
+	
+	
+	// you can leave this one out
+	classSwitcher('form select#color','.tabtab');
+	classSwitcher('form select#position','.tabtab');
+});
+
+
+// you can leave this one out too
+function classSwitcher(select,target) {
+
+	var select = $(select),
+		option = select.find('option'),
+		target = $(target);
+		
+	
+	option.each(function() {
+		
+		var $this = $(this);
+		
+		if(target.hasClass($this.val().replace(' ',''))) $this.attr('selected','selected');
+	});
+	
+	
+	select.change(function() {
+		
+		option.each(function() {
+			
+			target.removeClass($(this).val().replace(' ',''));
+		});
+		
+		
+		target.addClass($(this).val().replace(' ',''));
+	});
+}
+
+</script>
+
+
+</body>
+</html>

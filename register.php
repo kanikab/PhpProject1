@@ -66,47 +66,28 @@ ob_start();
             <div class="main"> 
                 <form action="register.php" method="post">
                     <h2>Registration</h2>
-                    <table> 
-                        <tr>
-                            <td>First Name </td> 
-                            <td></td>
-                            <td><input type="text" name="fname" maxlength="35" size="35" required/></td>
-                        </tr>
-                        <tr>
-                            <td>Last Name </td>
-                            <td></td>
-                            <td><input type="text" name="lname" maxlength="35" size="35"required/></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td> 
-                            <td></td>
-                            <td><input type="email" name="email" size="35" maxlength="255" required/></td>       
-                        </tr>
-                        <tr>
-                            <td>Password: </td>
-                            <td></td>
-                            <td><input type="password" name="password" maxlength="35" size="35" required/></td>
-                        </tr>
-                        <tr>
-                            <td>Confirm Password:</td> 
-                            <td></td>
-                            <td><input type="password" name="cpassword" maxlength="35" size="35" required/></td>
-                        </tr>
-                        <tr>
-                            <td><img src="CaptchaSecurityImages.php" alt="" /></td>
-                        </tr>
-                        <tr>
-                            <td>Security Code:</td>
-                            <td></td>
-                            <td><input id="security_code" name="security_code" type="text" required maxlength="35" size="35"/></td>
-                        </tr>
-                        <tr>
-                            <td><input type="submit" value="Register" /></td>
-                            <td><input type="reset" value="Reset" /></td>
-                        </tr>
-
+                    
+                    <p>First Name <br>
+                    <input type="text" name="fname" maxlength="35" size="35" required/></p>
+                    
+                    <p>Last Name <br>
+                    <input type="text" name="lname" maxlength="35" size="35"required/></p>
+                    
+                    <p>Email
+                    <br><input type="email" name="email" size="35" maxlength="255" required/></p>       
+                    
+                    <p>Password: 
+                    <br><input type="password" name="password" maxlength="35" size="35" required/></p>
+                    
+                    <p>Confirm Password:
+                    <br><input type="password" name="cpassword" maxlength="35" size="35" required/></p>
+                    
+                    <p><img src="CaptchaSecurityImages.php" alt="" />
+                    <br>Security Code:<input id="security_code" name="security_code" type="text" required maxlength="35" size="35"/>
+                    <p><input type="submit" value="Register" />
+                    <input type="reset" value="Reset" /></p>
                 </form>
-                </table>
+
                 <div id="reg" hidden="true"><h3>User is already register. Click on <a href="forgt.php">Forgot Password</a>.</h3></div>
             </div>
 
@@ -204,14 +185,28 @@ function registration() {
 }
 
 function pwdmatch($pwd, $cpwd) {
-    if ($pwd !== $cpwd) {
-        echo "<script type='text/javascript'>
-                    alert(\"Password donot match\");
-                    document.getElementById('password').value = \"\";
-                    document.getElementById('cpassword').value = \"\";
+   $clen = strlen($cpwd);
+            $len = strlen($pwd);
+            If ($len < 7 || $len > 20 || $clen < 7 || $clen > 20) {
+                echo "<script type='text/javascript'>
+             alert(\"Password length less than 7 characters or greater than 20 characters\");
              </script>";
-        return false;
-    }
-    return true;
-}
+                return false;
+            }
+            if ((preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!&]).{7,20}/", $pwd)) && (preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!&]).{7,20}/", $cpwd))) {
+                if ($pwd == $cpwd) {
+                    return true;
+                } else {
+                    echo "<script type='text/javascript'>
+             alert(\"Password Doesnot Match\");
+             </script>";
+                    return false;
+                }
+            } else {
+                echo "<script type='text/javascript'>
+             alert(\"Password doesnot meet the requirement\");
+             </script>";
+                return false;
+            }
+        }
 ?>
