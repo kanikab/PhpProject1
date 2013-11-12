@@ -38,7 +38,7 @@ ob_start();
         <!-- Navigation -->
         <div id="nav-wrapper">
             <ul id="nav" class="sf-menu">
-                <li class="current-menu-item"><a href="homepage.html">Globe</a></li>
+                <li class="current-menu-item"><a href="globe.html">Globe</a></li>
                 <li class="current-menu-item"><a href="login.php">Home</a></li>
                 <li class="current-menu-item"><a href="register.php">Register</a></li>
                 <li><a href="contact.html">Contact</a></li>
