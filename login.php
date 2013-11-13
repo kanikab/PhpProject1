@@ -36,9 +36,9 @@ ob_start();
         <!-- Navigation -->
         <div id="nav-wrapper">
             <ul id="nav" class="sf-menu">
-                <li class="current-menu-item"><a href="globe.html">Globe</a></li>
                 <li class="current-menu-item"><a href="login.php">Home</a></li>
                 <li class="current-menu-item"><a href="register.php">Register</a></li>
+                <li class="current-menu-item"><a href="Place_Mark.html">Map</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li class="social">
                     <!-- Social -->
@@ -136,11 +136,11 @@ ob_start();
         <script  src="js/custom.js"></script>
         <!-- ENDS JS -->
  <!-- audio control -->
-		<link rel="stylesheet" type="text/css" href="./plugin/css/style.css">
+		<link rel="stylesheet" type="text/css" href="../plugin/css/style.css">
     	<link rel="stylesheet" type="text/css" href="css/audio.css">
     	<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
-    	<script type="text/javascript" src="./plugin/jquery-jplayer/jquery.jplayer.js"></script>
-    	<script type="text/javascript" src="./plugin/ttw-music-player-min.js"></script>
+    	<script type="text/javascript" src="../plugin/jquery-jplayer/jquery.jplayer.js"></script>
+    	<script type="text/javascript" src="../plugin/ttw-music-player-min.js"></script>
     	<script type="text/javascript" src="js/myplaylist.js"></script>
     	<script type="text/javascript">
         $(document).ready(function(){
@@ -148,7 +148,7 @@ ob_start();
             $('.audio_control').ttwMusicPlayer(myPlaylist, {
                 autoplay:true, 
                 jPlayer:{
-                    swfPath:'./plugin/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
+                    swfPath:'../plugin/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
                 }
             });
         });
