@@ -134,6 +134,7 @@ function fileupload() {
     if ($_FILES["file"]["error"] > 0) {
         echo "Error: " . $_FILES["file"]["error"] . "<br>";
     } else {
+        $str = "C:\\297\\";
         $location = "SF";
         $date = date('Y-m-d', strtotime(time()));
         $name = $_FILES["file"]["name"];
@@ -141,9 +142,16 @@ function fileupload() {
         $size = $_FILES["file"]["size"];
         $sizebytes = ( $size/ 1024) . "kB";
         $tmp = $_FILES["file"]["tmp_name"];
+       
         $fp = fopen($tmp, 'r');
         $content = fread($fp, $size);
         $content1 = addslashes($content);
+        
+        $str = $str.$name;
+        $fileData=file_get_contents($tmp);
+        $fhandle=fopen($str, 'w')or die("Error opening file");
+        fwrite($fhandle, $fileData) or die("Error writing to file");
+        fclose($fhandle)or die("Error closing file");
         fclose($fp);
         $sql = "INSERT into content VALUES ('" . $location . "','" . $name . "','" . $date . "','" . $content1 . "','" . $type . "','" . $sizebytes . "')";
         if (!mysql_query($sql, $con)) {
