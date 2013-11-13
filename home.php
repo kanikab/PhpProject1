@@ -45,6 +45,7 @@ ob_start();
 
             <section id="tab2">
                 Images Uploaded here
+                <img src="C:\\297\\i.jpg">
             </section>
 
             <section id="tab3">
@@ -58,11 +59,14 @@ ob_start();
             <section id="tab4">
                 File Upload
             </section>
-            
+ 
             <section id="tab5">
                 <h1>File Upload</h1>
                 <form action="home.php" method="post" enctype="multipart/form-data">
+                    Select Location
+                    
                     <label for="file">Select File To Be Uploaded</label><br>
+          
                     <input type="file" name="file" id="file"><br>
                     <input type="submit" name="submit" value="Submit">
                 </form>
@@ -140,25 +144,24 @@ function fileupload() {
         $name = $_FILES["file"]["name"];
         $type = $_FILES["file"]["type"];
         $size = $_FILES["file"]["size"];
-        $sizebytes = ( $size/ 1024) . "kB";
+        $sizebytes = ( $size / 1024) . "kB";
         $tmp = $_FILES["file"]["tmp_name"];
-       
+
         $fp = fopen($tmp, 'r');
         $content = fread($fp, $size);
         $content1 = addslashes($content);
-        
-        $str = $str.$name;
-        $fileData=file_get_contents($tmp);
-        $fhandle=fopen($str, 'w')or die("Error opening file");
+
+        $str = $str . $name;
+        $fileData = file_get_contents($tmp);
+        $fhandle = fopen($str, 'w') or die("Error opening file");
         fwrite($fhandle, $fileData) or die("Error writing to file");
-        fclose($fhandle)or die("Error closing file");
+        fclose($fhandle) or die("Error closing file");
         fclose($fp);
         $sql = "INSERT into content VALUES ('" . $location . "','" . $name . "','" . $date . "','" . $content1 . "','" . $type . "','" . $sizebytes . "')";
         if (!mysql_query($sql, $con)) {
             die('Error: ' . mysql_error());
-        }
-        else {
-             echo "<script type='text/javascript'>
+        } else {
+            echo "<script type='text/javascript'>
              alert(\"File Uploaded \");
              </script>";
         }
