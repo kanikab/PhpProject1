@@ -22,9 +22,10 @@
 	
 </head>
 <body background="images/login.jpg">
+
 <div>
     <p style="text-align:center; margin-top:0px; margin-bottom:0px; padding:0px;">
-    <img src="images/logo.jpeg" alt="citystory" style="position:absolute; left:100px; top:150px;"/><br>
+    <img src="images/logo.jpeg" alt="citystory" width=150 height=150/><br>
      Time travel through images
     </p>    
     </div>
@@ -33,22 +34,21 @@
 	<div class="container">
 		
 		<div class="form-bg">
-			<form>
+			<form method="POST" action="check.php">
 				<h2>Login</h2>
-				<p><input type="text" placeholder="Username"></p>
-				<p><input type="password" placeholder="Password"></p>
+				<p><input type="text" placeholder="example@xyz.com" name="email"></p>
+				<p><input type="password" placeholder="Password" name="password"></p>
 				<label for="remember">
 				  <input type="checkbox" id="remember" value="remember" />
 				  <span>Remember me on this computer</span>
 				</label>
-				<button type="submit"></button>
+				<button type="submit" value="submit"></button>
 			<form>
 		</div>
 <!-- Facebook Login -->
    <div id="fb-root" style="float:left; width:1px;"></div>
 
 
-//login with facebook
 <script>
 window.fbAsyncInit = function() {
     FB.init({
@@ -76,11 +76,12 @@ window.location='validatefb.php';
 <p style="text-align:center; margin-top:0px; margin-bottom:0px; padding:0px;">
  <img border="0" src="login_facebook.png" onClick="fblogin();" border="0" 
 style="cursor:pointer">
+<a href="register.php"><img src="rainbow.gif"></a>
 
 
 	
 		<p class="forgot">Forgot your password? <a href=""> Reset</a></p>
-                <p class="forgot">New user? <a href="register.php"><img src="rainbow.gif"></a></p>
+                <p class="forgot">New user? <a href="register.php">Register</a></p>
 
 
 	</div><!-- container -->
