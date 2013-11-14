@@ -1,4 +1,7 @@
-<!DOCTYPE  html>
+<?php
+ob_start();
+?>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -7,17 +10,8 @@
         <!-- CSS -->
         <link rel="stylesheet" href="css/social-icons.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-        <!--[if IE 7]>
-                <link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_url') ?>/css/ie7-hacks.css" />
-        <![endif]-->
-        <!--[if IE 8]>
-                <link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_url') ?>/css/ie8-hacks.css" />
-        <![endif]-->
-        <!-- ENDS CSS -->	
 
-        
-        
-        <link rel="Stylesheet" type="text/css" href="js/scroller/css/smoothDivScroll.css" />
+       <link rel="Stylesheet" type="text/css" href="js/scroller/css/smoothDivScroll.css" />
 
         <!--[if IE]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -32,7 +26,7 @@
     </head>
     <body>
 
-        
+
         <!-- Image buttons -->
         <ul id="image-buttons">
             <li id="close-image" class="poshytip" title="Close image" ></li>
@@ -43,9 +37,9 @@
         <!-- Navigation -->
         <div id="nav-wrapper">
             <ul id="nav" class="sf-menu">
-                <li class="current-menu-item"><a href="index.html">Home</a></li>
-                <li class="current-menu-item"><a href="register.html">Register</a></li>
-                <li class="current-menu-item"><a href="Place_Mark.html">Map</a></li>
+                <li class="current-menu-item"><a href="globe.html">Globe</a></li>
+                <li class="current-menu-item"><a href="login.php">Home</a></li>
+                <li class="current-menu-item"><a href="register.php">Register</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li class="social">
                     <!-- Social -->
@@ -57,40 +51,28 @@
         </div>
         <!-- Navigation -->
         <!-- User Login -->
-        <div>
-            <div class="right">
-                <form id="usrlogin">
-                    <p><p></p>
-                    Username <input type="text" name="usrnme" value="" placeholder="example@xyz.com"/>
-                    Password <input type="password" name="password" value="" />
-                    <p><input type="submit" value="Login" name="login" />
-                        <input type="reset" value="Reset" /></p>
-                    </p>
-                </form>
-            </div> 
-                <div class="main"> 
-            <form action="" method="post">
-                <h2>Registration</h2>
-                <p>First Name <br /><input type="text" name="fname" maxlength="35" size="35"/></p>
-                <p>Last Name <br /><input type="text" name="lname" maxlength="35" size="35"/></p>
-                <p>Email <br /><input type="email" name="email" size="35" maxlength="255" /></p>       
-                <p>Password: <br /><input type="password" name="password" maxlength="35" size="35" /></p>
-                <p> Confirm Password: <br /><input type="password" name="cpassword" maxlength="35" size="35" /></p>
-                <img src="CaptchaSecurityImages.php" alt="" />
-                Security Code:
-                <input id="security_code" name="security_code" type="text" />
-                <br /><p><input type="submit" value="Register" /></p>
-                <br /><p<input type="reset" value="Reset" /></p>
-
-            </form>
-                </div>
+        <div id="mn1" class="main1">
+            <div id="mn"> 
+                <h2>Forgot Your Password </h2> 
+                <p><h4>Enter your Username/E-Mail Id</h4></p>
+                    <form method="post" action="forgot.php">
+                        <p><input type="text" name="username" required placeholder="xyz@example.com" /> 
+                            <input type="submit" value="Submit" name="Submit" />
+                        </p>   
+                    </form>
+            </div>
+            <div id="text1" hidden="true">
+                <h2>An Email has been sent to the registered email. Click here to return to 
+                    <a href ="login.php">Login</a> 
+                    page</h2>
+            </div>
+            <div id="text2" hidden="true">
+                <h2>No user is registered with the email. Click here to <a href="index.html">Register</a> 
+                   
+                    page.</h2>
+            </div>
+            
         </div>
-
-
-
-
-
-
         <!-- JS -->
         <!-- jQuery library - Please load it from Google API's -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" ></script>
@@ -136,5 +118,56 @@
         <script  src="js/custom.js"></script>
         <!-- ENDS JS -->
 
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            forgot_password();
+        }
+
+        function forgot_password() {
+            $uname = $_POST["username"];
+            //$uname = "bhatia_kanika@ymail.com";
+            $con = mysql_connect("localhost", "root", "");
+            if (!$con) {
+                die('Could not connect: ' . mysql_error());
+            }
+            mysql_select_db("297_project", $con);
+            $sql = "select * from userdetails where usernme = '" . $uname . "'";
+            $result = mysql_query($sql);
+            if (!$result) {
+                echo 'error';
+            } else {
+                $row = mysql_numrows($result);
+                if ($row == 1) {
+                    resetpwd();
+                    $msg = "Password reset has been requested. Please click on below link to reset the password";
+                    $url = "http://bestview.elasticbeanstalk.com/";
+                    $url .= "pwd_reset.php?username=$uname";
+                    $msg .= $url;
+                    mail($uname,"Password Reset",$msg);
+                }
+                else {
+                    nouser();
+                }
+            }
+        }
+        
+        function resetpwd(){
+            echo "<script type='text/javascript'>
+             document.getElementById('mn').hidden = true;
+             document.getElementById('text1').hidden = false;
+             document.getElementById('text2').hidden = true;
+             </script>";
+           
+        }
+        
+        
+        function nouser(){
+            echo "<script type='text/javascript'>
+             document.getElementById('mn').hidden = true;
+             document.getElementById('text1').hidden = true;
+             document.getElementById('text2').hidden = false;
+             </script>";
+        }
+        ?>
     </body>
 </html>

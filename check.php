@@ -18,6 +18,8 @@
       header("location:json.html");
     }
 	else{
+            $_SESSION["username"]= $email;
+            $_SESSION["name"]= $result['name'];
 		 header("location:index.html");
 	}
   }
