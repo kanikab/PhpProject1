@@ -119,19 +119,14 @@ ob_start();
         <!-- ENDS JS -->
 
         <?php
+        include 'rds_db.php';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             forgot_password();
         }
 
         function forgot_password() {
             $uname = $_POST["username"];
-            //$uname = "bhatia_kanika@ymail.com";
-            $con = mysql_connect("localhost", "root", "");
-            if (!$con) {
-                die('Could not connect: ' . mysql_error());
-            }
-            mysql_select_db("297_project", $con);
-            $sql = "select * from userdetails where usernme = '" . $uname . "'";
+            $sql = "select * from users where email = '" . $uname . "'";
             $result = mysql_query($sql);
             if (!$result) {
                 echo 'error';

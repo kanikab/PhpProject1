@@ -104,16 +104,12 @@ ob_start();
 </html>
 
 <?php
+include 'rds_db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     fileupload();
 }
 
 function fileupload() {
-    $con = mysql_connect("localhost", "root", "");
-    if (!$con) {
-        die('Could not connect: ' . mysql_error());
-    }
-    mysql_select_db("297_project", $con);
     if ($_FILES["file"]["error"] > 0) {
         echo "Error: " . $_FILES["file"]["error"] . "<br>";
     } else {

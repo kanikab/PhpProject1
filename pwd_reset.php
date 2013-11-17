@@ -118,23 +118,17 @@ ob_start();
         <!-- ENDS JS -->
 
         <?php
+        include 'rds_db.php';
         $uname = $_POST["username"];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             reset_password($uname);
         }
 
         function reset_password($uname) {
-            //$uname = $_POST["username"];
             $pwd = $_POST["pwd"];
             $cpwd = $_POST["cpwd"];
             if (chkpwd($pwd, $cpwd)) {
-                //$uname = "bhatia_kanika@ymail.com";
-                $con = mysql_connect("localhost", "root", "");
-                if (!$con) {
-                    die('Could not connect: ' . mysql_error());
-                }
-                mysql_select_db("297_project", $con);
-                $sql = "UPDATE userdetails SET password='" . $pwd . "'where usernme = '" . $uname . "'";
+                $sql = "UPDATE users SET password='" . $pwd . "'where email = '" . $uname . "'";
                 $result = mysql_query($sql);
                 if (!$result) {
                     echo 'error';
