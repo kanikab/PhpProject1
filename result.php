@@ -24,6 +24,8 @@ $sql = "INSERT INTO users ";
         die('Error: ' . mysql_error());
     } else {
         echo "<h3> Hello $name, you have been added to our database. Welcome!</h3>";
+        header("location:index.php");
+        
     }
     mysql_close($con);
 

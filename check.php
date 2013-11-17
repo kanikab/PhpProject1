@@ -12,23 +12,32 @@
 	mysql_select_db($database, $con) or die( "Unable to connect to database");*/
     $email = mysql_real_escape_string($_POST['email']);
     $password = mysql_real_escape_string($_POST['password']);
-   $con = mysql_connect("localhost", "root", "");
+    //for local testing only, remove later
+    $con = mysql_connect("localhost", "root", "");
     if (!$con) {
         die('Could not connect: ' . mysql_error());
     }
     mysql_select_db("297_project", $con);
-    $result = mysql_query("SELECT * FROM users WHERE email='$email' AND password=md5('$password')");
-
-    //kanika
+    
+    //uncomment after testing
+    //$result = mysql_query("SELECT * FROM users WHERE email='$email' AND password=md5('$password')");
+    
+    //delete after testing
+    $sql = "select * from userdetails where usernme = '" . $email . "' and password = '" . $password . "'";
+    
+    $result = mysql_query($sql);
+    
+    //kanika -- delete after testing
     echo mysql_num_rows($result);
     
     if(mysql_num_rows($result) > 0) {
-      header("location:json.html");
+        $_SESSION["username"]= $email;
+        $_SESSION["name"]= $result['name'];
+        header("location:globe.html");
     }
 	else{
-            $_SESSION["username"]= $email;
-            $_SESSION["name"]= $result['name'];
-		 header("location:index.html");
+                $_SESSION["logonfail"] = true;
+		 header("location:index.php");
 	}
  // }
 ?>

@@ -1,7 +1,3 @@
-/************************************************* 
-Elliot version 1.0.1 
-*************************************************/ 
-
 /* IMPORTS ------------------------------------------------------------*/
 
 @import url('reset.css');
@@ -150,7 +146,15 @@ background: #fdfdfd;
 border: 1px solid #ccc;
 padding: 15px;
 }
-
+.menu1 {
+  width: 1040px;
+  text-align: left;
+  margin-left: 100px;
+  margin-right: auto;
+  padding: 15px;
+  
+  
+}
 
 /* PAGE WRAP ------------------------------------------------------------*/
 
