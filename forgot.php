@@ -61,7 +61,7 @@ ob_start();
             </div>
             <div id="text1" hidden="true">
                 <h2>An Email has been sent to the registered email. Click here to return to 
-                    <a href ="login.php">Login</a> 
+                    <a href ="index.html">Login</a> 
                     page</h2>
             </div>
             <div id="text2" hidden="true">

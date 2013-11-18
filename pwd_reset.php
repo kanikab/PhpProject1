@@ -128,7 +128,7 @@ ob_start();
             $pwd = $_POST["pwd"];
             $cpwd = $_POST["cpwd"];
             if (chkpwd($pwd, $cpwd)) {
-                $sql = "UPDATE users SET password='" . $pwd . "'where email = '" . $uname . "'";
+                $sql = "UPDATE users SET password='" . md5($pwd) . "'where email = '" . $uname . "'";
                 $result = mysql_query($sql);
                 if (!$result) {
                     echo 'error';
