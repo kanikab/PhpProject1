@@ -1,4 +1,4 @@
-
+//functions for the globe.html
 function init() {
     google.load("earth", "1");
     google.earth.createInstance('map3d', initCB, failureCB);
