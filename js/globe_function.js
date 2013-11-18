@@ -50,7 +50,8 @@ function initCB(instance) {
                     db_placemark.setGeometry(db_pos);
                     ge.getFeatures().appendChild(db_placemark);
 	            google.earth.addEventListener(db_placemark, 'click', function (event) {
-	                alert("here is the click function");
+			window.location.href = "text.php?lon="+event.getTarget().getGeometry().getLongitude()+"&lat="+event.getTarget().getGeometry().getLatitude();
+			
 	            });
 		    
     	     i++;
@@ -85,23 +86,13 @@ function initCB(instance) {
             ge.getFeatures().appendChild(cur_placemark);
 	    
             google.earth.addEventListener(cur_placemark, 'click', function (event) {
-                alert("here is the click function");
-            });
+		window.location.href = "text.php?lon="+event.getTarget().getGeometry().getLongitude()+"&lat="+event.getTarget().getGeometry().getLatitude();
+              
+		  });
 	    
-	    /*
-            google.earth.addEventListener(cur_placemark, 'click', function (event) {
-                alert("here is the click function");
-
-                // Prevent default balloon from popping up for marker placemarks
-                event.preventDefault();
-
-                // wrap alerts in API callbacks and event handlers
-                // in a setTimeout to prevent deadlock in some browsers
-                setTimeout(function () {
-                    alert(text);
-                }, 0);
-            });
-	    */
+	     
+	    
+	   
 	    
 	    
             // Create a new LookAt.
@@ -118,19 +109,7 @@ function initCB(instance) {
     }
 
 
-    // listen to the click event
-    google.earth.addEventListener(placemark, 'click', function (event) {
-        alert("here is the click function");
-
-        // Prevent default balloon from popping up for marker placemarks
-        event.preventDefault();
-
-        // wrap alerts in API callbacks and event handlers
-        // in a setTimeout to prevent deadlock in some browsers
-        setTimeout(function () {
-            alert(text);
-        }, 0);
-    });
+   
 
 
     document.getElementById('installed-plugin-version').innerHTML = ge.getPluginVersion().toString();
