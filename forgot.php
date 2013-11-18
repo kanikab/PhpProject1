@@ -139,7 +139,7 @@ ob_start();
                     $url .= "pwd_reset.php?username=".$uname;
                     $msg .= $url;
                     mail($uname,"Password Reset",$msg);
-                    echo 'there';
+                    
                 }
                 else {
                     nouser();

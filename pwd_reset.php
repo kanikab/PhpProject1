@@ -1,4 +1,5 @@
 <?php
+session_start();
 ob_start();
 ?>
 <!DOCTYPE html>
@@ -120,6 +121,7 @@ ob_start();
         <?php
         include 'rds_db.php';
         $uname = $_POST["username"];
+        echo $uname;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             reset_password($uname);
         }
