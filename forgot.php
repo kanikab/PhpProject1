@@ -124,20 +124,23 @@ ob_start();
 
         function forgot_password() {
             $uname = $_POST["username"];
-            
+            echo $uname;
             $sql = "select * from users where email = '" . $uname . "'";
             $result = mysql_query($sql);
             if (!$result) {
                 echo 'error';
             } else {
+                echo $uname.' here';
                 $row = mysql_numrows($result);
                
                 if ($row == 1) {
+                    echo $uname.' there';
                     resetpwd();
                     $msg = "Password reset has been requested. Please click on below link to reset the password";
                     $url = "http://bestview.elasticbeanstalk.com/";
-                    $url .= "pwd_reset.php?username=".$uname;
+                    $url = $url."pwd_reset.php?username=".$uname;
                     $msg .= $url;
+                    echo 'Message is  '.$msg;
                     mail($uname,"Password Reset",$msg);
                     
                 }
