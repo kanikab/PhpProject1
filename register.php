@@ -1,6 +1,6 @@
 <iframe src="https://www.facebook.com/plugins/registration?
              client_id=671161372917644&
-             redirect_uri=http://localhost.com/result.php&
+             redirect_uri=http://localhost.com/index.html&
  fields=name,birthday,password,gender,location,email,captcha"
         scrolling="auto"
         frameborder="no"
