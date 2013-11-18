@@ -18,7 +18,7 @@ if ($users!="") {
 
 	if(mysql_num_rows($msql)>0){
 		$sqlrow=mysql_fetch_object($msql);
-		header('Location:home.php'); 
+		header('Location:globe.html'); 
 	}
 	else{		
 		header('Location:register.php?token='.$newtoken);
