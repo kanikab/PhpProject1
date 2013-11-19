@@ -13,5 +13,9 @@ kanika 6.0
 
 kanika 7.0
 
+<<<<<<< HEAD
 version 8.0
 
+=======
+Sushmitha 8.0
+>>>>>>> 7bbddedde1892739315ae808f36611673c089d94

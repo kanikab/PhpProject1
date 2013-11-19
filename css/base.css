@@ -43,12 +43,23 @@
 /* #Basic Styles
 ================================================== */
 	body { 
-		background: url(../images/login.jpg) #10a5d3;
+		background: url(../images/login.jpg) no-repeat center center fixed; 
 		font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		color: #444; 
 		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
 		-webkit-text-size-adjust: none;
+		-webkit-background-size: cover;
+		  -moz-background-size: cover;
+		  -o-background-size: cover;
+		  background-size: cover;
+		  }
  }
+#img.source-image {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 	
 
 /* #Typography

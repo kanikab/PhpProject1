@@ -18,13 +18,14 @@ $bday=$data['registration']['birthday'];
 $gender=$data['registration']['gender'];
 $location=$data['registration']['location']['name'];
 $email=$data['registration']['email'];
+$id=$data['user_id'];
 $sql = "INSERT INTO users ";
-    $sql .= "VALUES('$name', md5('$password'),'$bday','$gender','$location','$email')";
+    $sql .= "VALUES('$name', md5('$password'),'$bday','$gender','$location','$email','$id')";
     if (!mysql_query($sql)) {
         die('Error: ' . mysql_error());
     } else {
         echo "<h3> Hello $name, you have been added to our database. Welcome!</h3>";
-        header("location:index.php");
+        header("location:globe.html");
         
     }
     mysql_close($con);
