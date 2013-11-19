@@ -30,6 +30,7 @@ function upload($s3) {
     $sizebytes = ( $size / 1024) . "kB";
     $tmp = $_FILES["file"]["tmp_name"];
     
+    $date = date("Y-m-d");
     //database upload
      $fp = fopen($tmp, 'r');
      $content = fread($fp, $size);
@@ -40,12 +41,9 @@ function upload($s3) {
      fwrite($fhandle, $fileData) or die("Error writing to file");
      fclose($fhandle) or die("Error closing file");
      fclose($fp);
-     $sql = "INSERT into content VALUES ('" . $loc . "','" . $filename . "','" . $date . "','" . $content1 . "','" . $type . "','" . $sizebytes . "')";
+     $sql = "INSERT into content VALUES ('" . $loc . "','" . $filename . "','" . $date . "','" . $content . "','" . $type . "')";
         if (!mysql_query($sql)) {
-            //die('Error: ' . mysql_error());
-            echo "<script type='text/javascript'>
-             alert(\"File Uploaded Failed\");
-             </script>";
+            die('Error: ' . mysql_error());
         } else {
             echo "<script type='text/javascript'>
              alert(\"File Uploaded \");
@@ -56,6 +54,7 @@ function upload($s3) {
     //move the file
     if ($s3->putObjectFile($tmp, $bucket, $filename, S3::ACL_PUBLIC_READ)) {
         echo "We successfully uploaded your file.";
+        header('location: fileupload.php');
     } else {
         echo "Something went wrong while uploading your file... sorry.";
     }
