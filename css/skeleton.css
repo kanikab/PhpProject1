@@ -222,6 +222,12 @@
 	  width: 0;
 	  height: 0;
 	}
+	#img.source-image {
+	  width: 100%;
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	}
 	
 	
 	
