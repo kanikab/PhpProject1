@@ -1,9 +1,9 @@
 <?php
-
 session_start();
 
 include 'S3.php';
-if (!class_exists('S3')) require_once('S3.php');
+if (!class_exists('S3'))
+    require_once('S3.php');
 
 //AWS access info
 if (!defined('awsAccessKey'))
@@ -14,21 +14,21 @@ if (!defined('awsSecretKey'))
 //instantiate the class
 $s3 = new S3(awsAccessKey, awsSecretKey);
 $bucket = 'bestview-bucket';
-    $bucket_contents = $s3->getBucket($bucket);
+$bucket_contents = $s3->getBucket($bucket);
 echo "<div id=\"scroll-holder\"><div id=\"makeMeScrollable\">";
-foreach ($bucket_contents as $file){
+foreach ($bucket_contents as $file) {
 
     $fname = $file['name'];
-    //$place= split ("_", $fname);
-    //$place= $place[0];
-     $furl = "https://bestview-bucket.s3.amazonaws.com/".$fname;
-    
-   //output a link to the file
-    echo "<img src = \"$furl\">";
-    //echo "<a href=\"$furl\">$fname</a><br />";
-  
+    $place = split("_", $fname);
+    $loc = $_SESSION['location'];
+    if ($place[0] == $loc) {
+        $furl = "https://bestview-bucket.s3.amazonaws.com/" . $fname;
+        //output a link to the file
+        echo "<img src = \"$furl\">";
+        //echo "<a href=\"$furl\">$fname</a><br />";
+    }
 }
-  echo "</div></div>";
+echo "</div></div>";
 ?>
 
 <html>
@@ -66,7 +66,7 @@ foreach ($bucket_contents as $file){
                     <a href="https://twitter.com" class="poshytip  twitter" title="Follow my tweets"></a>
                     <!-- ENDS Social -->
                 </li>
-                 <li><a href="logoff.php">Sign Off</a></li>
+                <li><a href="logoff.php">Sign Off</a></li>
             </ul>
         </div>
         <!-- JS -->
