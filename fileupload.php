@@ -134,10 +134,7 @@ function fileupload() {
         fclose($fp);
         $sql = "INSERT into content VALUES ('" . $location . "','" . $name . "','" . $date . "','" . $content1 . "','" . $type . "','" . $sizebytes . "')";
         if (!mysql_query($sql, $con)) {
-            //die('Error: ' . mysql_error());
-            echo "<script type='text/javascript'>
-             alert(\"File Uploaded Failed\");
-             </script>";
+            die('Error: ' . mysql_error());
         } else {
             echo "<script type='text/javascript'>
              alert(\"File Uploaded \");
