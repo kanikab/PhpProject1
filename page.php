@@ -22,7 +22,8 @@ function upload($s3) {
      if ($_FILES["file"]["error"] > 0) {
         echo "Error: " . $_FILES["file"]["error"] . "<br>";
     } else {
-    $bucket = 'bestview-bucket';
+        $username = $_SESSION['username'];
+        $bucket = 'bestview-bucket';
     $loc = $_POST['place'];
     $filename = $loc . "_" . $_FILES["file"]["name"];
     $type = $_FILES["file"]["type"];
@@ -31,6 +32,7 @@ function upload($s3) {
     $tmp = $_FILES["file"]["tmp_name"];
     
     $date = date("Y-m-d");
+    $fname = $username."_".$filename;
     //database upload
      $fp = fopen($tmp, 'r');
      $content = fread($fp, $size);
@@ -41,7 +43,7 @@ function upload($s3) {
      fwrite($fhandle, $fileData) or die("Error writing to file");
      fclose($fhandle) or die("Error closing file");
      fclose($fp);
-     $sql = "INSERT into content VALUES ('" . $loc . "','" . $filename . "','" . $date . "','" . $content . "','" . $type . "')";
+     $sql = "INSERT into content VALUES ('" . $loc . "','" . $fname . "','" . $date . "','" . $content . "','" . $type . "')";
         if (!mysql_query($sql)) {
             die('Error: ' . mysql_error());
         } else {

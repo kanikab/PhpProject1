@@ -88,4 +88,45 @@ ob_start();
 </html>
 
 <?php
+include 'rds_db.php';
+include 'S3.php';
+if (!class_exists('S3'))
+    require_once('S3.php');
+
+//AWS access info
+if (!defined('awsAccessKey'))
+    define('awsAccessKey', 'AKIAICNHLOXNYBFVEYFQ');
+if (!defined('awsSecretKey'))
+    define('awsSecretKey', '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');
+
+//instantiate the class
+$s3 = new S3(awsAccessKey, awsSecretKey);
+$bucket = 'bestview-bucket';
+$bucket_contents = $s3->getBucket($bucket);
+
+$sql = "select name from content";
+$result = mysql_query($sql);
+if (!$result) {
+            die('Error: ' . mysql_error());
+        } else {
+            while($row = mysql_fetch_array($result)){
+                $name = split("_", $row['name']);
+                if( $name[0] == $_SESSION['username']){
+                
+                echo "<div id=\"scroll-holder\"><div id=\"makeMeScrollable\">";
+foreach ($bucket_contents as $file) {
+
+    $fname = $file['name'];
+    $names = split("_", $fname);
+   if ($names[1] == $name[1]) {
+        $furl = "https://bestview-bucket.s3.amazonaws.com/" . $fname;
+        //output a link to the file
+        echo "<img src = \"$furl\">";
+        //echo "<a href=\"$furl\">$fname</a><br />";
+    }
+}
+echo "</div></div>";
+            }  
+        }
+        }
 ?>
