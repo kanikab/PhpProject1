@@ -17,8 +17,9 @@ if(!$row) {
     $result = mysql_query($sql);
     $row = mysql_fetch_array($result);
     $placemark["name"]= $row["name"];
-    exit;
+    //exit;
 }
-$_SESSION("location") = $placemark;
-header('Location: story.php');
+$_SESSION["location"] = $placemark;
+//header('Location: story.php');
+echo $_SESSION['location'];
 ?>
