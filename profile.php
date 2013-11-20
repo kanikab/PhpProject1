@@ -1,6 +1,3 @@
-<?php 
-session_start();
-?>
 <!doctype html>
 <head>
 	<!-- General Metas -->
@@ -45,15 +42,16 @@ session_start();
 			</div><br><br><br><br><br>
 				<div class="well span10" align="center" style="float:none; margin:0 auto">
 					<?php
+					session_start();
 					include ('rds_db.php');
 					$email=$_SESSION['username'];
+					echo $email."email";
 					$sql=mysql_query("SELECT * from users where email='$email'");
+					echo $sql."query";
 					while($row = mysql_fetch_array($sql))
 					  {
-                                            echo $row;
-					  $userid=$row['id'];
-                                          echo $userid;
-                                          echo $email;
+						echo "you are inside while";
+                      $userid=$row['id'];
 					  if($userid!=0){
 					  	$file="http://graph.facebook.com/".$userid."/picture?type=large";
 					  	echo "<img id=\"round-image\" src=\"$file\"></img>";
