@@ -44,6 +44,7 @@ session_start();
 			</nav>
 			</div><br><br><br><br><br>
 				<div class="well span10" align="center" style="float:none; margin:0 auto">
+					window.onload=function(){
 					<?php
 					include ('rds_db.php');
 					$email=$_SESSION['username'];
@@ -63,7 +64,7 @@ session_start();
 					  echo "<h4>"."email  " ."</h4>"."<p>".$row['email']."</p>";
 					  }
 					 mysql_close($conn);
-					?>	
+					?>	}
 					
 				</div>
 			
