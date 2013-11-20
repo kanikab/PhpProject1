@@ -12,7 +12,7 @@ session_start();
   	<!-- Stylesheets -->
 	<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
 	<style>
-	body { 
+	html,body { 
 	  background: url(images/login.jpg) no-repeat center center fixed; 
 	  -webkit-background-size: cover;
 	  -moz-background-size: cover;
@@ -28,10 +28,11 @@ session_start();
 	</style>
 
 </head>
-<body background="images/login.jpg">
+<body>
       <script src="bootstrap/js/bootstrap.js"></script>
-	<div class="container">
- 	<form class="well span5 centred" action="check.php" method="POST">
+		&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
+	<div class="container-fluid">
+ 	<form class="well span5 pull-right" action="check.php" method="POST">
 		<div>
 	        <p style="text-align:center; margin-top:0px; margin-bottom:0px; padding:0px;">
 	            <img src="images/logo.jpeg" alt="citystory" width=150 height=150/><br>
