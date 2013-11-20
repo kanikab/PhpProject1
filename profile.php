@@ -43,7 +43,7 @@
 			</div><br><br><br><br><br>
 				<div class="well span10" align="center" style="float:none; margin:0 auto">
 					<?php
-					include ("connection.php");
+					include ("rds_db.php");
 					$email=$_SESSION['username'];
 					$sql=mysql_query("SELECT * from users where email='$email'");
 
