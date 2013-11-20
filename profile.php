@@ -44,12 +44,11 @@ session_start();
 			</nav>
 			</div><br><br><br><br><br>
 				<div class="well span10" align="center" style="float:none; margin:0 auto">
-					window.onload=function(){
 					<?php
 					include ('rds_db.php');
 					$email=$_SESSION['username'];
 					$sql=mysql_query("SELECT * from users where email='$email'");
-
+					echo "U are inside the script!yay";
 					while($row = mysql_fetch_array($sql))
 					  {
 					  $userid=$row['id'];
@@ -64,7 +63,7 @@ session_start();
 					  echo "<h4>"."email  " ."</h4>"."<p>".$row['email']."</p>";
 					  }
 					 mysql_close($conn);
-					?>	}
+					?>	
 					
 				</div>
 			
