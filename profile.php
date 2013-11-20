@@ -54,7 +54,7 @@ session_start();
 					  $userid=$row['id'];
 					  if($userid!=0){
 					  	$file="http://graph.facebook.com/".$userid."/picture?type=large";
-					  	echo "<img id='round-image' src='$file'></img>";
+					  	echo "<img id=\"round-image\" src=\"$file\"></img>";
 					  }
 					  echo "<h4>"."Name  "."</h4>" ."<p>".$row['name']."</p>";
 					  echo "<h4>"."Birthday  " ."</h4>"."<p>". $row['birthday']."</p>";
