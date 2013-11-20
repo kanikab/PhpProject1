@@ -86,7 +86,7 @@ session_start();
 		</div>
 		<!-- JS  -->
 	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
-	    <script>window.jQuery || document.write("<script src='js/jquery-1.5.1.min.js'>\x3C/script>")</script>
+	    <script>window.jQuery || document.write("<script src='js/jquery-1.5.1.min.js'>\x3C/script>");</script>
 	    <script src="js/app.js"></script>
 		
 
@@ -94,12 +94,14 @@ session_start();
                     </body>
                     </html>
 					<?php
-					if($_SESSION['logonfail'] == true){
+					if($_SESSION["logonfail"] == true){
+                                            echo 'hi';
 					    echo "<script type='text/javascript'>
 					             document.getElementById('text').hidden = false;
 					             </script>";
 					}
 					else{
+                                            echo 'bi';
 					    echo "<script type='text/javascript'>
 					             document.getElementById('text').hidden = true;
 					             </script>";
