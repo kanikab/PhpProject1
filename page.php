@@ -32,7 +32,7 @@ function upload($s3) {
     $tmp = $_FILES["file"]["tmp_name"];
     
     $date = date("Y-m-d");
-    $fname = $username."_".$filename;
+    $fname = $username."_".$_FILES["file"]["name"];
     //database upload
      $fp = fopen($tmp, 'r');
      $content = fread($fp, $size);
