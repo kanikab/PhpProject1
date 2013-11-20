@@ -6,7 +6,7 @@ $lon = $_GET['lon'];
 
 include_once("rds_db.php");
 
-$sql = "SELECT * FROM globe WHERE latitude = $lat AND longitude = $lon";
+$sql = "SELECT * FROM globe WHERE latitude >= $lat-0.001 AND latitude <= $lat+0.01 AND longitude >= $lon - 0.01 AND longitude <= $lon + 0.01 ";
 $result = mysql_query($sql);
 $row = mysql_fetch_array($result);
 $placemark["name"]= $row["name"];
