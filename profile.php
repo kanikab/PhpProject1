@@ -48,7 +48,7 @@ session_start();
 					include ('rds_db.php');
 					$email=$_SESSION['username'];
 					$sql=mysql_query("SELECT * from users where email='$email'");
-
+					echo "U are inside the script!yay";
 					while($row = mysql_fetch_array($sql))
 					  {
 					  $userid=$row['id'];

@@ -1,94 +1,107 @@
-<?php
-
-include 'rds_db.php';
-	
-$qr = "SELECT * FROM globe";
-
-$res= mysql_query($qr);
-$i=0;
-
-while($row = mysql_fetch_array($res))
-{
-$placemark[$i]["latitude"] = $row["latitude"];
-$placemark[$i]["longitude"] = $row["longitude"];
-$placemark[$i]["name"] = $row["name"];
-$i++;
-}
- header('Content-type: application/json');
-  echo json_encode($placemark);
+<?php 
+session_start();
 ?>
+<!doctype html>
 
-<!DOCTYPE  html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Best View</title>
-
-        <!-- CSS -->
-        <link rel="stylesheet" href="css/social-icons.css" type="text/css" media="screen" />
-        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-        	
-
-        <link rel="Stylesheet" type="text/css" href="js/scroller/css/smoothDivScroll.css" />
-
-        <!-- GOOGLE FONTS -->
-        <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-  
-  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-  
-  <style type="text/css">@import "static/examples.css";</style>
-  <style type="text/css">@import "static/prettify/prettify.css";</style>
-  <script type="text/javascript" src="static/prettify/prettify.js"></script>
-  
-  
-  <!-- Change the key below to your own Maps API key -->
-  <script type="text/javascript" src="http://www.google.com/jsapi?hl=en&amp;key=ABQIAAAAwbkbZLyhsmTCWXbTcjbgbRSzHs7K5SvaUdm8ua-Xxy_-2dYwMxQMhnagaawTo7L1FE1-amhuQxIlXw"></script>
-  <script type="text/javascript" src="js/globe_function.js"></script>
-  <script type="text/javascript" src="js/jquery.js"></script>
-  <script>
-  google.load("earth", "1");
-  </script>
-        <style>
-            .google_earth {
-                position: fixed;
-                width: 100%;
-                height: 100%;
-                left: 0;
-                z-index: 10;
-            }
-        </style>
-    </head>
-    <body onload="if(window.prettyPrint)prettyPrint();init();">
-    	
-        <!-- Image buttons -->
-        <ul id="image-buttons" style = "top:0">
-            <li id="close-image" class="poshytip" title="Close image"></li>
-            <li id="info-button" class="poshytip" title="Image info"></li>
-        </ul>
-        <!-- ENDS Image buttons -->
-
-        <!-- Navigation -->
-        <div id="nav-wrapper" style = "top:0">
-            <ul id="nav" class="sf-menu">
-                <li class="current-menu-item"><a href="Globe.html">Globe</a></li>
-                <li class="current-menu-item"><a href="login.php">Profile</a></li>
-                <li class="current-menu-item"><a href="register.php"></a></li>               
-                <li><a href="contact.html">Contact</a></li>
-                <li class="social">
-                    <!-- Social -->
-                    <a href="http://www.facebook.com" class="poshytip  facebook" title="Become a fan"></a>
-                    <a href="https://twitter.com" class="poshytip  twitter" title="Follow my tweets"></a>
-                    <!-- ENDS Social -->
-                </li>			
-            </ul>
-        </div>
-        <!-- Navigation -->
-            
-    	<div id="map3d" class = "google_earth"></div>
+<head>
 	
+    <!-- General Metas -->
+    <meta charset="utf-8" />
+    <title>Citystory</title>
 
-   
-  </div>
+  	<!-- Stylesheets -->
+	<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<style>
+	html,body { 
+	  background: url(images/login.jpg) no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	}
+	.container {
+	     padding-right: 0; /*15px in bootstrap.css*/
+	     padding-left: 0;  /*idem*/
+	     margin-right: auto;
+	     margin-left: auto;
+	}
+	</style>
 
-    </body>
-</html>
+</head>
+<body>
+      <script src="bootstrap/js/bootstrap.js"></script>
+		&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
+	<div class="container-fluid">
+ 	<form class="well span5 pull-right" action="check.php" method="POST">
+		<div>
+	        <p style="text-align:center; margin-top:0px; margin-bottom:0px; padding:0px;">
+	            <img src="images/logo.jpeg" alt="citystory" width=150 height=150/><br>
+	            Time travel through images
+	        </p>    
+	    </div>
+		<br><br><label>Username</label>
+		<input type="text" class="span3" autofocus="autofocus" placeholder="example@xyz.com" name="email"/> </br>
+		<label>Password </label>
+		<input type="password" class="span3" placeholder="password" name="password"/></br>
+		<button  type="submit" value="submit" class="btn btn-primary">Submit </button>
+		<button type="reset" class="btn">Clear</button></br></br>
+		<input type="checkbox" id="remember" value="remember" />
+        <span>Remember me on this computer</span></br>
+ 		<div id="text" style="color: red" hidden ="true"> Enter valid login details </div></br><br>
+		 <!-- Facebook Login -->
+		   <div id="fb-root" style="float:left; width:1px;"></div>
+
+
+		<script>
+		window.fbAsyncInit = function() {
+		    FB.init({
+		       appId: '671161372917644',
+		       cookie: true,
+		       xfbml: true,
+		       oauth: true
+		    }); 
+		};
+
+		(function() {
+		var e = document.createElement('script'); e.async = true;
+		e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+		document.getElementById('fb-root').appendChild(e);
+		}());
+
+		function fblogin(){
+		FB.login(function(response){
+		if (response.authResponse) {
+		window.location='validatefb.php';
+		}
+		},{scope: 'publish_stream'});
+		}
+		</script>  
+		<p style="text-align:left; margin-top:0px; margin-bottom:0px; padding:0px;">
+		 <img border="0" src="login_facebook.png" onClick="fblogin();" border="0" 
+		style="cursor:pointer">
+            <a href="register.php"><img src="rainbow.gif"></a></br></br>
+        <p class="forgot">Forgot your password? <a href="forgot.php"> Reset</a></p>
+        <p class="forgot">New user? <a href="register.php">Register</a></p>
+		</form>
+		</div>
+		<!-- JS  -->
+	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+	    <script>window.jQuery || document.write("<script src='js/jquery-1.5.1.min.js'>\x3C/script>")</script>
+	    <script src="js/app.js"></script>
+		
+
+        <!-- End Document -->
+                    </body>
+                    </html>
+					<?php
+					if($_SESSION['logonfail'] == true){
+					    echo "<script type='text/javascript'>
+					             document.getElementById('text').hidden = false;
+					             </script>";
+					}
+					else{
+					    echo "<script type='text/javascript'>
+					             document.getElementById('text').hidden = true;
+					             </script>";
+					}
+					?>

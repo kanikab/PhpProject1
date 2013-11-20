@@ -13,6 +13,6 @@
     }
 	else{
                 $_SESSION["logonfail"] = true;
-		 header("location:index.php");
+		 header("location:home.php");
 	}
 ?>

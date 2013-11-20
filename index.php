@@ -93,15 +93,3 @@ session_start();
         <!-- End Document -->
                     </body>
                     </html>
-					<?php
-					if($_SESSION['logonfail'] == true){
-					    echo "<script type='text/javascript'>
-					             document.getElementById('text').hidden = false;
-					             </script>";
-					}
-					else{
-					    echo "<script type='text/javascript'>
-					             document.getElementById('text').hidden = true;
-					             </script>";
-					}
-					?>
