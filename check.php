@@ -8,11 +8,14 @@
 
     if(mysql_num_rows($result) > 0) {
         $_SESSION["username"]= $email;
+        echo hi.$_SESSION["username"];
         $_SESSION["name"]= $result['name'];
-        header("location:globe.html");
+        echo bi.$_SESSION["name"];
+        //header("location:globe.html");
     }
 	else{
                 $_SESSION["logonfail"] = true;
-		 header("location:home.php");
+                echo there.$_SESSION["logonfail"];
+		 //header("location:home.php");
 	}
 ?>
