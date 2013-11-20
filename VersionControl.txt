@@ -20,3 +20,5 @@ kanika 9.0
 Sushmitha 10.0
 
 Sushmitha 11.0
+
+kanika 12.0

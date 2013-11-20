@@ -1,4 +1,6 @@
-
+<?php 
+session_start();
+?>
 <!doctype html>
 <head>
 	<!-- General Metas -->
@@ -43,7 +45,7 @@
 			</div><br><br><br><br><br>
 				<div class="well span10" align="center" style="float:none; margin:0 auto">
 					<?php
-					include ("rds_db.php");
+					include ('rds_db.php');
 					$email=$_SESSION['username'];
 					$sql=mysql_query("SELECT * from users where email='$email'");
 
@@ -60,7 +62,7 @@
 					  echo "<h4>"."Location " ."</h4>"."<p>".$row['location']."</p>";
 					  echo "<h4>"."email  " ."</h4>"."<p>".$row['email']."</p>";
 					  }
-					 mysql_close($con);
+					 mysql_close($conn);
 					?>	
 					
 				</div>

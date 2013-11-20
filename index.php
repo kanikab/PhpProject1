@@ -94,7 +94,7 @@ session_start();
                     </body>
                     </html>
 					<?php
-					if($_SESSION["logonfail"] == true){
+					if($_SESSION['logonfail'] == true){
 					    echo "<script type='text/javascript'>
 					             document.getElementById('text').hidden = false;
 					             </script>";
