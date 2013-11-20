@@ -48,10 +48,12 @@ session_start();
 					include ('rds_db.php');
 					$email=$_SESSION['username'];
 					$sql=mysql_query("SELECT * from users where email='$email'");
-					echo "U are inside the script!yay";
 					while($row = mysql_fetch_array($sql))
 					  {
+                                            echo $row;
 					  $userid=$row['id'];
+                                          echo $userid;
+                                          echo $email;
 					  if($userid!=0){
 					  	$file="http://graph.facebook.com/".$userid."/picture?type=large";
 					  	echo "<img id=\"round-image\" src=\"$file\"></img>";
