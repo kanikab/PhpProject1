@@ -12,12 +12,6 @@
   *zoom: 1;
 }
 
-[class*="span"].centred {
-  margin-left: 620px;
-  margin-right: auto;
-  float: none;
-}
-
 .clearfix:before,
 .clearfix:after {
   display: table;
@@ -4373,6 +4367,11 @@ input[type="submit"].btn.btn-mini {
   *z-index: 2;
   margin-bottom: 20px;
   overflow: visible;
+}
+navbar
+  .navbar-inner {
+    background-color: #2c2c2c;
+  }
 }
 
 .navbar-inner {
