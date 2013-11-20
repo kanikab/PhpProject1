@@ -1,18 +1,19 @@
 <?php
-  session_start();
+$dir = sys_get_temp_dir();
+session_save_path($dir);
+ session_start();
   include 'rds_db.php';
     $email = mysql_real_escape_string($_POST['email']);
     $password = mysql_real_escape_string($_POST['password']);
     
     $result = mysql_query("SELECT * FROM users WHERE email='$email' AND password=md5('$password')");
     if(mysql_num_rows($result) > 0) {
-        echo "result".$result['name'];
         $_SESSION["username"]= $email;
         //header("location:globe.html");
         header("location: test.php");
     }
 	else{
-                $_SESSION["logonfail"] = true;
+                //$_SESSION["logonfail"] = true;
                 echo "there".$_SESSION["logonfail"];
 		 //header("location:home.php");
 	}
