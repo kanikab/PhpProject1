@@ -19,7 +19,7 @@ if(!$row) {
     $placemark["name"]= $row["name"];
     //exit;
 }
-$_SESSION["location"] = $placemark;
+$_SESSION["location"] = $placemark["name"];
 //header('Location: story.php');
 echo $_SESSION['location'];
 ?>
