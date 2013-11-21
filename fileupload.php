@@ -7,45 +7,46 @@ ob_start();
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Best View</title>
+        <title>Citystory</title>
 
         <!-- CSS -->
-        <link rel="stylesheet" href="css/social-icons.css" type="text/css" media="screen" />
-        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-        <link rel="Stylesheet" type="text/css" href="js/scroller/css/smoothDivScroll.css" />
+		<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
+		<style>
+			html,body {
+            	background: url(images/upload.jpg) no-repeat center center fixed;
+            	-webkit-background-size: cover; /* For WebKit*/
+            	-moz-background-size: cover;    /* Mozilla*/
+            	-o-background-size: cover;      /* Opera*/
+            	background-size: cover;         /* Generic*/
+        	}
+        </style>
+    	<style type="text/css">
+        	p {font-family: fantasy, cursive, Lucida;font-size:27px;}
+    	</style>
         <script type="text/javascript" src="/jquery/jquery-1.3.2.min.js"></script>
         <script src="jquery.plug-in.js" type="text/javascript"></script>
         <script src="http://bdhacker.sourceforge.net/javascript/countries/countries-2.0-min.js"></script>
-        <!--[if IE]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <!-- ENDS JS -->
-
-        <!-- GOOGLE FONTS -->
-        <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+ 
     </head>
 
     <body>
-        <!-- Navigation -->
-        <div id="nav-wrapper">
-            <ul id="nav" class="sf-menu">
-                <li class="current-menu-item"><a href="globe.html">Globe</a></li>
-                <li class="current-menu-item"><a href="profile.php">Profile</a></li>
-                <li class="current-menu-item"><a href="albums.php">Albums</a></li>
-                <li class="current-menu-item"><a href="fileupload.php">Upload</a></li>
-                <li class="social">
-                    <!-- Social -->
-                    <a href="https://www.facebook.com/citystorysf" class="poshytip  facebook" title="Become a fan"></a>
-                    <a href="https://twitter.com" class="poshytip  twitter" title="Follow my tweets"></a>
-                    <!-- ENDS Social -->
-                </li>
-                <li><a href="logoff.php">Sign Off</a></li>
-            </ul>
-        </div>
+        <div class="container">
+	        <!-- Navigation bar -->
+	        <nav class="navbar navbar-inner navbar-fixed-top navbar-inverse" role="navigation">
+	            <ul class="nav navbar-nav nav-pills">
+	                <li><img src="images/logo.jpeg" alt="Citystory" width="100" height="100"></li>
+	                <li ><a href="globe.html">Globe</a></li>
+	                <li ><a href="profile.php">Profile</a></li>
+	                <li><a href="albums.php">Albums</a></li>
+	                <li class="active"><a href="fileupload.php">Upload</a></li>
+	                <li><a href="logoff.php">Sign Off</a></li></ul>
+	            <a href="https://www.facebook.com/citystorysf"title="Become a fan"><img src="facebook.jpeg" height="50" width="50"></a>
+	        </nav>
+	    </div><br><br><br><br><br>
 
         <!-- Navigation -->
-        <div class="main1">
-            <h1>File Upload</h1>
+        <div div class="well span7" align="center" style="float:none; margin:0 auto">
+            <p><strong>What's your story?</strong></p><br>
             <!--<form action="fileupload.php" method="post" enctype="multipart/form-data">-->
             <form action="page.php" method="post" enctype="multipart/form-data">
                 <h6>Select Location
@@ -131,10 +132,9 @@ ob_start();
                     <option value = "Washington">Washington</option>
                     <option value = "Zurich">Zurich</option>
                 </select>
-                    <br><h6><label for="file">Select File To Be Uploaded</label><br>
-                        <br>
-                <input name="file" type="file" /><br>
-                <input name="Submit" type="submit" value="Upload">
+                    <br><br>
+                <input name="file" type="file" class="offset2"/><br><br>
+                <input name="Submit" type="submit" value="Upload"class="btn-inverse">
             </form>
         </div>
         <!-- Navigation -->
