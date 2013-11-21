@@ -119,9 +119,8 @@ if (!$result) {
     while ($row = mysql_fetch_array($result)) {
         echo "<div id=\"scroll-holder\"><div id=\"makeMeScrollable\">";
         $name = split("_", $row['name']);
-        if ($name[0] == $_SESSION['username']) {
-
-
+        //if ($name[0] == $_SESSION['username']) {
+        if ($name[0] == "sush.sreeni@gmail.com") {
             foreach ($bucket_contents as $file) {
 
                 $fname = $file['name'];
