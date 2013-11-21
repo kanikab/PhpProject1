@@ -9,12 +9,11 @@ session_save_path($dir);
     $result = mysql_query("SELECT * FROM users WHERE email='$email' AND password=md5('$password')");
     if(mysql_num_rows($result) > 0) {
         $_SESSION["username"]= $email;
-        //header("location:globe.html");
-        header("location: test.php");
+        header("location:globe.html");
+        
     }
 	else{
-                //$_SESSION["logonfail"] = true;
-                echo "there".$_SESSION["logonfail"];
-		 //header("location:home.php");
+                $_SESSION["logonfail"] = true;
+                header("location:home.php");
 	}
 ?>

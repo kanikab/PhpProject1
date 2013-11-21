@@ -1,5 +1,6 @@
 <?php
-
+$dir = sys_get_temp_dir();
+session_save_path($dir);
 session_start();
 include 'rds_db.php';
 include 'S3.php';
