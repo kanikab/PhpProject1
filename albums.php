@@ -2,14 +2,27 @@
 $dir = sys_get_temp_dir();
 session_save_path($dir);
 session_start();
-
+ob_start();
 ?>
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Best View</title>
+        <title>Citystory</title>
 
         <!-- CSS -->
+		<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
+		<style>
+			html,body {
+            	background: url(images/album.jpg) no-repeat center center fixed;
+            	-webkit-background-size: cover; /* For WebKit*/
+            	-moz-background-size: cover;    /* Mozilla*/
+            	-o-background-size: cover;      /* Opera*/
+            	background-size: cover;         /* Generic*/
+        	}
+        </style>
+    	<style type="text/css">
+        	p {font-family: fantasy, cursive, Lucida;font-size:27px;}
+    	</style>
         <link rel="stylesheet" href="css/social-icons.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
         <link rel="Stylesheet" type="text/css" href="js/scroller/css/smoothDivScroll.css" />
@@ -27,21 +40,19 @@ session_start();
 
     <body>
         <!-- Navigation -->
-        <div id="nav-wrapper">
-            <ul id="nav" class="sf-menu">
-                <li class="current-menu-item"><a href="globe.html">Globe</a></li>
-                <li class="current-menu-item"><a href="profile.php">Profile</a></li>
-                <li class="current-menu-item"><a href="albums.php">Albums</a></li>
-                <li class="current-menu-item"><a href="fileupload.php">Upload</a></li>
-                <li class="social">
-                    <!-- Social -->
-                    <a href="https://www.facebook.com/citystorysf" class="poshytip  facebook" title="Become a fan"></a>
-                    <a href="https://twitter.com" class="poshytip  twitter" title="Follow my tweets"></a>
-                    <!-- ENDS Social -->
-                </li>
-                 <li><a href="logoff.php">Sign Off</a></li>
-            </ul>
-        </div>
+        <div class="container">
+	        <!-- Navigation bar -->
+	        <nav class="navbar navbar-inner navbar-fixed-top navbar-inverse" role="navigation">
+	            <ul class="nav navbar-nav nav-pills">
+	                <li><img src="images/logo.jpeg" alt="Citystory" width="100" height="100"></li>
+	                <li ><a href="globe.html">Globe</a></li>
+	                <li ><a href="profile.php">Profile</a></li>
+	                <li class="active"><a href="albums.php">Albums</a></li>
+	                <li><a href="fileupload.php">Upload</a></li>
+	                <li><a href="logoff.php">Sign Off</a></li></ul>
+	            <a href="https://www.facebook.com/citystorysf"title="Become a fan"><img src="facebook.jpeg" height="50" width="50"></a>
+	        </nav>
+	    </div><br><br><br><br><br>
         <!-- JS -->
         <!-- jQuery library - Please load it from Google API's -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" ></script>
@@ -111,14 +122,11 @@ $result = mysql_query($sql);
 if (!$result) {
             die('Error: ' . mysql_error());
         } else {
-            
             while($row = mysql_fetch_array($result)){
-                
                 $name = split("_", $row['name']);
-               echo "<div id=\"scroll-holder\"><div id=\"makeMeScrollable\">";
                 if( $name[0] == $_SESSION['username']){
                 
-                
+                echo "<div id=\"scroll-holder\"><div id=\"makeMeScrollable\">";
 foreach ($bucket_contents as $file) {
 
     $fname = $file['name'];

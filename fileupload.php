@@ -11,15 +11,7 @@ ob_start();
 
         <!-- CSS -->
 		<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
-		<style>
-			html,body {
-            	background: url(images/upload.jpg) no-repeat center center fixed;
-            	-webkit-background-size: cover; /* For WebKit*/
-            	-moz-background-size: cover;    /* Mozilla*/
-            	-o-background-size: cover;      /* Opera*/
-            	background-size: cover;         /* Generic*/
-        	}
-        </style>
+		
     	<style type="text/css">
         	p {font-family: fantasy, cursive, Lucida;font-size:27px;}
     	</style>
@@ -29,7 +21,7 @@ ob_start();
  
     </head>
 
-    <body>
+    <body background="images/upload.jpg">
         <div class="container">
 	        <!-- Navigation bar -->
 	        <nav class="navbar navbar-inner navbar-fixed-top navbar-inverse" role="navigation">
