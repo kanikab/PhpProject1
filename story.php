@@ -19,12 +19,12 @@ $bucket = 'bestview-bucket';
 $bucket_contents = $s3->getBucket($bucket);
 echo "<div id=\"scroll-holder\"><div id=\"makeMeScrollable\">";
 foreach ($bucket_contents as $file) {
-
     $fname = $file['name'];
     $place = split("_", $fname);
-    $loc = $_SESSION["location"];
-    if (strcasecmp($place[0],$loc)) {
-       $furl = "https://bestview-bucket.s3.amazonaws.com/" . $fname;
+    $loc = $_SESSION["location"]; 
+    if (strtolower($place[0]) == strtolower($loc)) {
+        //echo "place is ".$place[0]."location is ".$loc;
+        $furl = "https://bestview-bucket.s3.amazonaws.com/" . $fname;
         //output a link to the file
         echo "<img src = \"$furl\">";
         //echo "<a href=\"$furl\">$fname</a><br />";
