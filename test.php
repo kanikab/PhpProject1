@@ -1,7 +1,11 @@
 <?php 
-$dir = sys_get_temp_dir();
-session_save_path($dir);
-session_start();
-
-echo $_SESSION['username'];
+include 'rds_db.php';
+$pwd = "hi";
+$uname = "test";
+ $sql = "UPDATE users SET password= '" . md5($pwd) . "' where email = '" . $uname . "'";
+                $result = mysql_query($sql);
+                 if (!$result) {
+                    echo mysql_error();
+                } else {
+                echo $result;}
 ?>

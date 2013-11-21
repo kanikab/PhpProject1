@@ -54,7 +54,7 @@ ob_start();
                 <h2>Forgot Your Password </h2> 
                 <p><h4>Enter your Username/E-Mail Id</h4></p>
                     <form method="post" action="forgot.php">
-                        <p><input type="text" name="username" required placeholder="xyz@example.com" /> 
+                        <p><input type="text" name="username" required placeholder="xyz@example.com" requiredss/> 
                             <input type="submit" value="Submit" name="Submit" />
                         </p>   
                     </form>

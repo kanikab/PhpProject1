@@ -65,6 +65,7 @@ ob_start();
                     <p><form method="post" action="pwd_reset.php">
                         <p>New Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="pwd" required/> </p>
                         <p>Confirm Password   &nbsp;&nbsp;&nbsp;<input type="password" name="cpwd" required/> </p>
+                        <input type="hidden" name="username" value="<?php $_GET['username'] ?>">
                         <p> <input type="submit" value="Submit" name="Submit" />
                             <input type="reset" value="Reset" name="Reset" />
                         </p>
@@ -122,27 +123,30 @@ ob_start();
 
         <?php
         include 'rds_db.php';
-        $uname = $_POST["username"];
-        echo $uname;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            reset_password($uname);
+            reset_password();
         }
 
-        function reset_password($uname) {
+        function reset_password() {
             $pwd = $_POST["pwd"];
             $cpwd = $_POST["cpwd"];
+            $uname = $_POST["username"];
             if (chkpwd($pwd, $cpwd)) {
-                $sql = "UPDATE users SET password='" . md5($pwd) . "'where email = '" . $uname . "'";
+                //$sql = "UPDATE users SET password= '" . md5($pwd) . "' where email = '" . $uname . "'";
+               $sql = "insert into users(time, value) values('$time', '$value') on duplicate key update value = '$value'";
                 $result = mysql_query($sql);
+                echo 'hiiii there'.$result;
                 if (!$result) {
                     echo 'error';
                 } else {
                     $row = mysql_affected_rows();
+                    echo $row;
                     if ($row == 1) {
+                        echo 'hiiii';
                         echo "<script type='text/javascript'>
              alert(\"Password Changed \n You will be redirected to login page.\");
              </script>";
-                        header('Location: login.php');
+                        header('Location: index.php');
                     }
                 }
             }
@@ -157,8 +161,7 @@ ob_start();
              </script>";
                 return false;
             }
-            if ((preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!&]).{7,20}/", $pwd)) && (preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!&]).{7,20}/", $cpwd))) {
-                if ($pwd == $cpwd) {
+            if ($pwd == $cpwd) {
                     return true;
                 } else {
                     echo "<script type='text/javascript'>
@@ -166,12 +169,6 @@ ob_start();
              </script>";
                     return false;
                 }
-            } else {
-                echo "<script type='text/javascript'>
-             alert(\"Password doesnot meet the requirement\");
-             </script>";
-                return false;
-            }
         }
         ?>
     </body>
