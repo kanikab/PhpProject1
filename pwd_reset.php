@@ -56,15 +56,11 @@ ob_start();
         <!-- User Login -->
         <div id="mn1" class="main1">
             <div id="mn"> 
-                <h2>Password Reset</h2> 
-                <center>
-                    Password Requirement:
-                    <br></br>
-                    Minimum 7 characters and Maximum 20 characters.<br></br>
-                    Atleast 1 uppercase alphabet, 1 digit and special characters
+                <center><h2>Password Reset</h2> 
+
                     <p><form method="post" action="pwd_reset.php">
-                        <p>New Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="pwd" required/> </p>
-                        <p>Confirm Password   &nbsp;&nbsp;&nbsp;<input type="password" name="cpwd" required/> </p>
+                        <p>New Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="pwd" required placeholder="password" maxlength="20"/> </p>
+                        <p>Confirm Password   &nbsp;&nbsp;&nbsp;<input type="password" name="cpwd" required placeholder="confirm password" maxlength="20"/> </p>
                         <input type="hidden" name="username" value="<?php $_GET['username'] ?>">
                         <p> <input type="submit" value="Submit" name="Submit" />
                             <input type="reset" value="Reset" name="Reset" />
@@ -132,17 +128,13 @@ ob_start();
             $cpwd = $_POST["cpwd"];
             $uname = $_POST["username"];
             if (chkpwd($pwd, $cpwd)) {
-                //$sql = "UPDATE users SET password= '" . md5($pwd) . "' where email = '" . $uname . "'";
-               $sql = "insert into users(time, value) values('$time', '$value') on duplicate key update value = '$value'";
+                $sql = "insert into users(name, password) values('$uname', '$pwd') on duplicate key update password = '$pwd'";
                 $result = mysql_query($sql);
-                echo 'hiiii there'.$result;
                 if (!$result) {
                     echo 'error';
                 } else {
                     $row = mysql_affected_rows();
-                    echo $row;
                     if ($row == 1) {
-                        echo 'hiiii';
                         echo "<script type='text/javascript'>
              alert(\"Password Changed \n You will be redirected to login page.\");
              </script>";
@@ -162,13 +154,13 @@ ob_start();
                 return false;
             }
             if ($pwd == $cpwd) {
-                    return true;
-                } else {
-                    echo "<script type='text/javascript'>
+                return true;
+            } else {
+                echo "<script type='text/javascript'>
              alert(\"Password Doesnot Match\");
              </script>";
-                    return false;
-                }
+                return false;
+            }
         }
         ?>
     </body>
