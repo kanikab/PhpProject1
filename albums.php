@@ -2,7 +2,7 @@
 $dir = sys_get_temp_dir();
 session_save_path($dir);
 session_start();
-ob_start();
+
 ?>
 <html>
     <head>
@@ -111,11 +111,14 @@ $result = mysql_query($sql);
 if (!$result) {
             die('Error: ' . mysql_error());
         } else {
+            
             while($row = mysql_fetch_array($result)){
+                
                 $name = split("_", $row['name']);
+               echo "<div id=\"scroll-holder\"><div id=\"makeMeScrollable\">";
                 if( $name[0] == $_SESSION['username']){
                 
-                echo "<div id=\"scroll-holder\"><div id=\"makeMeScrollable\">";
+                
 foreach ($bucket_contents as $file) {
 
     $fname = $file['name'];
