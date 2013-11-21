@@ -56,6 +56,7 @@ ob_start();
                     <option value = "Atlantic City">Atlantic City</option>
                     <option value = "Baltimore">Baltimore</option>
                     <option value = "Bangkok">Bangkok</option>
+                    <option value = "Bangalore">Bangalore</option>
                     <option value = "Beijing">Beijing</option>
                     <option value = "Berlin">Berlin</option>
                     <option value = "Berne">Berne</option>
