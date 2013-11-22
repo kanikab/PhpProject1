@@ -27,6 +27,12 @@ function initCB(instance) {
     style.getIconStyle().setIcon(icon);
     style.getIconStyle().setScale(15.0);
     
+    var cur_icon = ge.createIcon('');
+    cur_icon.setHref('http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png');
+    var cur_style = ge.createStyle('');
+    cur_style.getIconStyle().setIcon(cur_icon);
+    cur_style.getIconStyle().setScale(15.0);
+    
     
     
     var placemark = new Array();
@@ -78,7 +84,7 @@ function initCB(instance) {
             //create placemark
             cur_placemark = ge.createPlacemark('');
             cur_placemark.setName("You are here");
-            cur_placemark.setStyleSelector(style);
+            cur_placemark.setStyleSelector(cur_style);
             var cur_pos = ge.createPoint('');
             cur_pos.setLatitude(cur_lat);
             cur_pos.setLongitude(cur_lon);
