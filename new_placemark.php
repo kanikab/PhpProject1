@@ -1,17 +1,17 @@
 <?php
 
 $result = $_POST['place'];
-$result_explode = explode('|', $result);
-$lat = $result_explode[1];
-$lon = $result_explode[2];
-$city= $result_explode[0];
 
-if (isset($result_explode)) {
+if (isset($result)) {
+    $result_explode = explode('|', $result);
+    $lat = $result_explode[1];
+    $lon = $result_explode[2];
+    $city= $result_explode[0];
     include_once("rds_db.php");
 
     $sql = "SELECT * FROM globe WHERE name = '$city'";
-    $result = mysql_query($sql);
-    $row = mysql_fetch_array($result);
+    $res = mysql_query($sql);
+    $row = mysql_fetch_array($res);
 
     if(!$row) {
         $sql = "INSERT INTO globe (latitude,longitude, name) VALUES ('$lat', '$lon', '$city')";
