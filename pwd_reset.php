@@ -128,17 +128,20 @@ ob_start();
             $cpwd = $_POST["cpwd"];
             $uname = $_POST["username"];
             if (chkpwd($pwd, $cpwd)) {
-                $sql = "insert into users(name, password) values('$uname', '$pwd') on duplicate key update password = '$pwd'";
+                $password = md5($pwd);
+                $sql = "insert into users(password, email) values('$password', '$uname',) on duplicate key update password = '$password'";
                 $result = mysql_query($sql);
+                echo 'hi'.$result;
                 if (!$result) {
                     echo 'error';
                 } else {
                     $row = mysql_affected_rows();
+                    echo 'frrr'.$row;
                     if ($row == 1) {
                         echo "<script type='text/javascript'>
-             alert(\"Password Changed \n You will be redirected to login page.\");
-             </script>";
-                        header('Location: index.php');
+                          alert(\"Password Changed \n Click on Login page.\");
+                        </script>";
+                        //header('Location: index.php');
                     }
                 }
             }
