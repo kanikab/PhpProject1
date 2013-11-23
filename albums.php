@@ -118,11 +118,11 @@ if (!$result) {
    
     while ($row = mysql_fetch_array($result)) {
    
-        $name = split("_", $row['name']);
+        $name = split("____", $row['name']);
         if ($name[0] == $_SESSION['username']) {
                  foreach ($bucket_contents as $file) {
                 $fname = $file['name'];
-                $names = split("_", $fname);
+                $names = split("____", $fname);
                 if ($names[1] == $name[1]) {
                     $furl = "https://bestview-bucket.s3.amazonaws.com/" . $fname;
                     //output a link to the file

@@ -43,8 +43,8 @@ ob_start();
         <!-- Navigation -->
         <div div class="well span7" align="center" style="float:none; margin:0 auto">
             <p><strong>What's your story?</strong></p><br>
-            <!--<form action="fileupload.php" method="post" enctype="multipart/form-data">-->
-            <form action="page.php" method="post" enctype="multipart/form-data">
+            <form action="fileupload.php" method="post" enctype="multipart/form-data">
+           <!-- <form action="page.php" method="post" enctype="multipart/form-data"> -->
                 <h6>Select Location
                     <select id = "place" name="place">
                         <option value = "Amsterdam">Amsterdam</option>
@@ -138,41 +138,70 @@ ob_start();
 
                     <?php
                     include 'rds_db.php';
+                    include 'S3.php';
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         fileupload();
                     }
 
                     function fileupload() {
-                        if ($_FILES["file"]["error"] > 0) {
-                            echo "Error: " . $_FILES["file"]["error"] . "<br>";
-                        } else {
-                            $str = "C:\\297\\";
-                            $location = "SF";
-                            $date = date('Y-m-d', strtotime(time()));
-                            $name = $_FILES["file"]["name"];
-                            $type = $_FILES["file"]["type"];
-                            $size = $_FILES["file"]["size"];
-                            $sizebytes = ( $size / 1024) . "kB";
-                            $tmp = $_FILES["file"]["tmp_name"];
+                        if (!class_exists('S3'))
+                            require_once('S3.php');
 
-                            $fp = fopen($tmp, 'r');
-                            $content = fread($fp, $size);
-                            $content1 = addslashes($content);
+//AWS access info
+                        if (!defined('awsAccessKey'))
+                            define('awsAccessKey', 'AKIAICNHLOXNYBFVEYFQ');
+                        if (!defined('awsSecretKey'))
+                            define('awsSecretKey', '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');
 
-                            $str = $str . $name;
-                            $fileData = file_get_contents($tmp);
-                            $fhandle = fopen($str, 'w') or die("Error opening file");
-                            fwrite($fhandle, $fileData) or die("Error writing to file");
-                            fclose($fhandle) or die("Error closing file");
-                            fclose($fp);
-                            $sql = "INSERT into content VALUES ('" . $location . "','" . $name . "','" . $date . "','" . $content1 . "','" . $type . "','" . $sizebytes . "')";
-                            if (!mysql_query($sql, $con)) {
-                                die('Error: ' . mysql_error());
-                            } else {
-                                echo "<script type='text/javascript'>
-             alert(\"File Uploaded \");
-             </script>";
-                            }
+//instantiate the class
+                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                        if (isset($_POST['Submit'])) {
+                            upload($s3);
                         }
                     }
+                        function upload($s3) {
+                            if ($_FILES["file"]["error"] > 0) {
+                                echo "Error: " . $_FILES["file"]["error"] . "<br>";
+                            } else {
+                                $username = $_SESSION['username'];
+                                $bucket = 'bestview-bucket';
+                                $loc = $_POST['place'];
+                                $filename = $loc . "____" . $_FILES["file"]["name"];
+                                $type = $_FILES["file"]["type"];
+                                $size = $_FILES["file"]["size"];
+                                $sizebytes = ( $size / 1024) . "kB";
+                                $tmp = $_FILES["file"]["tmp_name"];
+
+                                $date = date("Y-m-d");
+                                $fname = $username . "____" . $_FILES["file"]["name"];
+                                //database upload
+                                $fp = fopen($tmp, 'r');
+                                $content = fread($fp, $size);
+                                $content = addslashes($content);
+
+                                $fileData = file_get_contents($tmp);
+                                $fhandle = fopen($filename, 'w') or die("Error opening file");
+                                fwrite($fhandle, $fileData) or die("Error writing to file");
+                                fclose($fhandle) or die("Error closing file");
+                                fclose($fp);
+                                $sql = "INSERT into content VALUES ('" . $loc . "','" . $fname . "','" . $date . "','" . $content . "','" . $type . "')";
+                                if (!mysql_query($sql)) {
+                                    die('Error: ' . mysql_error());
+                                } 
+
+                                //create a new bucket
+                                //move the file
+                                if ($s3->putObjectFile($tmp, $bucket, $filename, S3::ACL_PUBLIC_READ)) {
+                                    echo "<script type='text/javascript'>
+                                        alert(\"File Uploaded \");
+                                    </script>";
+                                } else {
+                                    echo "<script type='text/javascript'>
+                                        alert(\"Something went wrong while uploading your file... sorry. \");
+                                      </script>";
+                                }
+                            }
+                        }
+
+                    
                     ?>

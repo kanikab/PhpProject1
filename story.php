@@ -72,7 +72,7 @@ $bucket_contents = $s3->getBucket($bucket);
 	 echo "<div class=\"flexslider\">";
 foreach ($bucket_contents as $file) {
     $fname = $file['name'];
-    $place = split("_", $fname);
+    $place = split("____", $fname);
     $loc = $_SESSION["location"]; 
     if (strtolower($place[0]) == strtolower($loc)) {
       $furl = "https://bestview-bucket.s3.amazonaws.com/" . $fname;
