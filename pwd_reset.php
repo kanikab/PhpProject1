@@ -40,10 +40,7 @@ ob_start();
         <!-- Navigation -->
         <div id="nav-wrapper">
             <ul id="nav" class="sf-menu">
-                <li class="current-menu-item"><a href="login.php">Home</a></li>
-                <li class="current-menu-item"><a href="register.php">Register</a></li>
-                <li class="current-menu-item"><a href="Place_Mark.html">Map</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li class="current-menu-item"><a href="index.php">Home</a></li>
                 <li class="social">
                     <!-- Social -->
                     <a href="http://www.facebook.com" class="poshytip  facebook" title="Become a fan"></a>
@@ -129,19 +126,16 @@ ob_start();
             $uname = $_POST["username"];
             if (chkpwd($pwd, $cpwd)) {
                 $password = md5($pwd);
-                $sql = "insert into users(password, email) values('$password', '$uname',) on duplicate key update password = '$password'";
+                $sql = "insert into users(password, email) values('$password', '$uname') on duplicate key update password = '$password'";
                 $result = mysql_query($sql);
-                echo 'hi'.$result;
                 if (!$result) {
                     echo 'error';
                 } else {
                     $row = mysql_affected_rows();
-                    echo 'frrr'.$row;
-                    if ($row == 1) {
+                    if ($row == 2) {
                         echo "<script type='text/javascript'>
-                          alert(\"Password Changed \n Click on Login page.\");
+                          alert(\"Password Changed. Click on Home page.\");
                         </script>";
-                        //header('Location: index.php');
                     }
                 }
             }
