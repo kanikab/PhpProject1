@@ -110,14 +110,14 @@ if (!defined('awsSecretKey'))
 $s3 = new S3(awsAccessKey, awsSecretKey);
 $bucket = 'bestview-bucket';
 $bucket_contents = $s3->getBucket($bucket);
-
 $sql = "select name from content";
 $result = mysql_query($sql);
 if (!$result) {
     die('Error: ' . mysql_error());
 } else {
+   
     while ($row = mysql_fetch_array($result)) {
-        echo "<div id=\"scroll-holder\"><div id=\"makeMeScrollable\">";
+   
         $name = split("_", $row['name']);
         if ($name[0] == $_SESSION['username']) {
                  foreach ($bucket_contents as $file) {
@@ -130,8 +130,9 @@ if (!$result) {
                     //echo "<a href=\"$furl\">$fname</a><br />";
                 }
             }
-            echo "</div></div>";
+            
         }
+        
     }
 }
 ?>
