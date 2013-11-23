@@ -35,7 +35,7 @@ session_start();
 	                <li><img src="images/logo.jpeg" alt="Citystory" width="100" height="100"></li>
 	                <li ><a href="globe.html">Globe</a></li>
 	                <li><a href="profile.php">Profile</a></li>
-	                <li class="albums"><a href="albums.php">Albums</a></li>
+	                <li class="active"><a href="albums.php">Albums</a></li>
 	                <li><a href="fileupload.php">Upload</a></li>
 	                <li><a href="logoff.php">Sign Off</a></li></ul>
 	            <a href="https://www.facebook.com/citystorysf"title="Become a fan"><img src="facebook.jpeg" height="50" width="50"></a>
