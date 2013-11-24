@@ -127,6 +127,7 @@ ob_start();
             if (chkpwd($pwd, $cpwd)) {
                 $password = md5($pwd);
                 echo 'password is '.$password;
+                echo 'username is '.$uname;
                 $sql = "insert into users(password, email) values('$password', '$uname') on duplicate key update password = '$password'";
                 $result = mysql_query($sql);
                 echo 'result is '.$result;
