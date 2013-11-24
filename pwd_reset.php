@@ -117,6 +117,7 @@ ob_start();
         <?php
         include 'rds_db.php';
        $_SESSION['uname'] = $_GET['username']; 
+       echo 'user is '.$_SESSION['uname'];
         ?>
     </body>
 </html>
