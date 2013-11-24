@@ -55,7 +55,7 @@ ob_start();
             <div id="mn"> 
                 <center><h2>Password Reset</h2> 
 
-                    <p><form method="post" action="pwd_reset.php">
+                    <p><form method="post" action="reset.php">
                         <p>New Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="pwd" required placeholder="password" maxlength="20"/> </p>
                         <p>Confirm Password   &nbsp;&nbsp;&nbsp;<input type="password" name="cpwd" required placeholder="confirm password" maxlength="20"/> </p>
                         <input type="hidden" name="username" value="<?php $_GET['username'] ?>">
@@ -116,53 +116,7 @@ ob_start();
 
         <?php
         include 'rds_db.php';
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            reset_password();
-        }
-
-        function reset_password() {
-            $pwd = $_POST["pwd"];
-            $cpwd = $_POST["cpwd"];
-            $uname = $_POST["username"];
-            if (chkpwd($pwd, $cpwd)) {
-                $password = md5($pwd);
-                echo 'password is '.$password;
-                echo 'username is '.$uname;
-                $sql = "insert into users(password, email) values('$password', '$uname') on duplicate key update password = '$password'";
-                $result = mysql_query($sql);
-                echo 'result is '.$result;
-                if (!$result) {
-                    echo 'error';
-                } else {
-                    $row = mysql_affected_rows();
-                    echo 'affected row '.$row;
-                    if ($row == 2) {
-                        echo "<script type='text/javascript'>
-                          alert(\"Password Changed. Click on Home page.\");
-                        </script>";
-                    }
-                }
-            }
-        }
-
-        function chkpwd($pwd, $cpwd) {
-            $clen = strlen($cpwd);
-            $len = strlen($pwd);
-            If ($len < 7 || $len > 20 || $clen < 7 || $clen > 20) {
-                echo "<script type='text/javascript'>
-             alert(\"Password length less than 7 characters or greater than 20 characters\");
-             </script>";
-                return false;
-            }
-            if ($pwd == $cpwd) {
-                return true;
-            } else {
-                echo "<script type='text/javascript'>
-             alert(\"Password Doesnot Match\");
-             </script>";
-                return false;
-            }
-        }
+       $_SESSION['uname'] = $_GET['username']; 
         ?>
     </body>
 </html>
