@@ -126,12 +126,15 @@ ob_start();
             $uname = $_POST["username"];
             if (chkpwd($pwd, $cpwd)) {
                 $password = md5($pwd);
+                echo 'password is '.$password;
                 $sql = "insert into users(password, email) values('$password', '$uname') on duplicate key update password = '$password'";
                 $result = mysql_query($sql);
+                echo 'result is '.$result;
                 if (!$result) {
                     echo 'error';
                 } else {
                     $row = mysql_affected_rows();
+                    echo 'affected row '.$row;
                     if ($row == 2) {
                         echo "<script type='text/javascript'>
                           alert(\"Password Changed. Click on Home page.\");

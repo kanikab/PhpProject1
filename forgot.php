@@ -133,7 +133,7 @@ ob_start();
                
                 if ($row == 1) {
                     resetpwd();
-                    $msg = "Password reset has been requested. Please click on below link to reset the password    <br>";
+                    $msg = "Password reset has been requested. Please click on below link to reset the password. ";
                     $url = "http://bestview.elasticbeanstalk.com/";
                     $url = $url."pwd_reset.php?username=".$uname;
                     $msg .= $url;
