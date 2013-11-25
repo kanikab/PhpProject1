@@ -42,7 +42,7 @@ session_start();
 	        </p>    
 	    </div>
 		<br><br><label>Username</label>
-		<input type="text" class="span3" autofocus="autofocus" placeholder="example@xyz.com" name="email" required/> </br>
+		<input type="email" class="span3" autofocus="autofocus" placeholder="example@xyz.com" name="email" required/> </br>
 		<label>Password </label>
 		<input type="password" class="span3" placeholder="password" name="password" required/></br>
 		<button  type="submit" value="submit" class="btn btn-primary">Submit </button>

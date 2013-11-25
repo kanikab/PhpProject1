@@ -40,22 +40,24 @@ ob_start();
          <div class="well span10" align="center" style="float:none; margin:0 auto">
        
                 <h2>Forgot Your Password </h2> 
+                <div id="mn">
                 <br><p>Enter your  email id</p>
+                
                     <form method="post" action="forgot.php">
-                        <p><input type="text" name="username" required placeholder="xyz@example.com" requiredss/> 
+                        <p><input type="email" name="username" required placeholder="xyz@example.com" requiredss/> 
                              <br><input name="submit" type="submit" value="submit"class="btn-inverse">
                         </p>   
                     </form>
-            
+            </div>
             <div id="text1" hidden="true">
-                <h2>An Email has been sent to the registered email. Click here to return to 
-                    <a href ="index.html">Login</a> 
-                    page</h2>
+                <h4>An Email has been sent to the registered email. Click here to return to 
+                    <a href ="index.php">Login</a> 
+                    page</h4>
             </div>
             <div id="text2" hidden="true">
-                <h2>No user is registered with the email. Click here to <a href="index.html">Register</a> 
+                <h4>No user is registered with the email. Click here to <a href="index.php">Register</a> 
                    
-                    page.</h2>
+                    page.</h4>
             </div>
 		</div>
             
