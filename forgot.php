@@ -5,60 +5,48 @@ ob_start();
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Best View</title>
+        <title>Citystory</title>
 
         <!-- CSS -->
-        <link rel="stylesheet" href="css/social-icons.css" type="text/css" media="screen" />
-        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-
-       <link rel="Stylesheet" type="text/css" href="js/scroller/css/smoothDivScroll.css" />
-
-        <!--[if IE]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <!-- ENDS JS -->
-
-        <!-- GOOGLE FONTS -->
-        <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-
-
-
-    </head>
+       <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
+        <style>
+		 html,body {
+	            background: url(images/forgot.jpg) no-repeat center center fixed;
+	            -webkit-background-size: cover; /* For WebKit*/
+	            -moz-background-size: cover;    /* Mozilla*/
+	            -o-background-size: cover;      /* Opera*/
+	            background-size: cover;         /* Generic*/
+	        }
+	    </style>
+		<style type="text/css">
+	        p {font-family: fantasy, cursive, Lucida;font-size:18px;}
+	    </style>
+	</head>
     <body>
+		<!-- Navigation -->
+        <div class="container">
+            <!-- Navigation bar -->
+            <nav class="navbar navbar-inner navbar-fixed-top navbar-inverse" role="navigation">
+                <ul class="nav navbar-nav nav-pills">
+                    <li><img src="images/logo.jpeg" alt="Citystory" width="100" height="100"></li>
+                    <li ><a href="index.php">Login</a></li>
+                    <li><a href="register.php">Register</a></li></ul>
+                <a href="https://www.facebook.com/citystorysf"title="Become a fan"><img src="facebook.jpeg" height="50" width="50"></a>
+            </nav>
+        </div><br><br><br><br><br><strong></strong>
 
-
-        <!-- Image buttons -->
-        <ul id="image-buttons">
-            <li id="close-image" class="poshytip" title="Close image" ></li>
-            <li id="info-button" class="poshytip" title="Image info"></li>
-        </ul>
-        <!-- ENDS Image buttons -->
-
-        <!-- Navigation -->
-        <div id="nav-wrapper">
-            <ul id="nav" class="sf-menu">
-                <li class="current-menu-item"><a href="index.html">Home</a></li>
-                <li class="current-menu-item"><a href="register.php">Register</a></li>
-                <li class="social">
-                    <!-- Social -->
-                    <a href="https://www.facebook.com/citystorysf" class="poshytip  facebook" title="Become a fan"></a>
-                    <a href="https://twitter.com" class="poshytip  twitter" title="Follow my tweets"></a>
-                    <!-- ENDS Social -->
-                </li>			
-            </ul>
-        </div>
-        <!-- Navigation -->
+        
         <!-- User Login -->
-        <div id="mn1" class="main1">
-            <div id="mn"> 
+         <div class="well span10" align="center" style="float:none; margin:0 auto">
+       
                 <h2>Forgot Your Password </h2> 
-                <p><h4>Enter your Username/E-Mail Id</h4></p>
+                <br><p>Enter your  email id</p>
                     <form method="post" action="forgot.php">
                         <p><input type="text" name="username" required placeholder="xyz@example.com" requiredss/> 
-                            <input type="submit" value="Submit" name="Submit" />
+                             <br><input name="submit" type="submit" value="submit"class="btn-inverse">
                         </p>   
                     </form>
-            </div>
+            
             <div id="text1" hidden="true">
                 <h2>An Email has been sent to the registered email. Click here to return to 
                     <a href ="index.html">Login</a> 
@@ -69,52 +57,10 @@ ob_start();
                    
                     page.</h2>
             </div>
+		</div>
             
-        </div>
-        <!-- JS -->
-        <!-- jQuery library - Please load it from Google API's -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" ></script>
-
-        <!-- Smoothscroller -->
-        <!-- jQuery UI Widget and Effects Core (custom download)
-             You can make your own at: http://jqueryui.com/download -->
-        <script src="js/scroller/js/jquery-ui-1.8.23.custom.min.js" ></script>
-
-        <!-- Latest version (3.0.6) of jQuery Mouse Wheel by Brandon Aaron
-             You will find it here: http://brandonaaron.net/code/mousewheel/demos -->
-        <script src="js/scroller/js/jquery.mousewheel.min.js" ></script>
-
-        <!-- jQuery Kinectic (1.5) used for touch scrolling -->
-        <script src="js/scroller/js/jquery.kinetic.js" ></script>
-
-        <!-- Smooth Div Scroll 1.3 minified-->
-        <script src="js/scroller/js/jquery.smoothdivscroll-1.3-min.js" ></script>
-        <!-- ENDS Smoothscroller -->
-
-
-        <script src="js/quicksand.js"></script>
-
-        <!-- prettyPhoto -->
-        <script  src="js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
-        <link rel="stylesheet" href="js/prettyPhoto/css/prettyPhoto.css" type="text/css" media="screen" />
-        <!-- ENDS prettyPhoto -->
-
-        <!-- superfish -->
-        <link rel="stylesheet" media="screen" href="css/superfish.css" /> 
-        <script  src="js/superfish-1.4.8/js/hoverIntent.js"></script>
-        <script  src="js/superfish-1.4.8/js/superfish.js"></script>
-        <script  src="js/superfish-1.4.8/js/supersubs.js"></script>
-        <!-- ENDS superfish -->
-
-        <!-- poshytip -->
-        <link rel="stylesheet" href="js/poshytip-1.0/src/tip-twitter/tip-twitter.css" type="text/css" />
-        <link rel="stylesheet" href="js/poshytip-1.0/src/tip-yellowsimple/tip-yellowsimple.css" type="text/css" />
-        <script  src="js/poshytip-1.0/src/jquery.poshytip.min.js"></script>
-        <!-- ENDS poshytip -->
-
-        <script  src="js/backstretch.js"></script>
-        <script  src="js/custom.js"></script>
-        <!-- ENDS JS -->
+        
+       
 
         <?php
         include 'rds_db.php';
