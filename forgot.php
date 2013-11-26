@@ -5,6 +5,8 @@ ob_start();
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="google-translate-customization" content="dd6dc8d31eae27c9-1af41dda936d789b-g8a2fe6bb665c9411-1d"></meta>
+
         <title>Citystory</title>
 
         <!-- CSS -->
