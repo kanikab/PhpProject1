@@ -88,7 +88,7 @@ echo '<script type=\"text/javascript\">
 		});
 		</script>
         <!-- audio control -->        
-                <div id = "audio" class = "audio_control"> </div>
+        <div id = "audio" class = "audio_control"> </div>
     
 	<link rel="stylesheet" type="text/css" href="./plugin/css/style.css">
     	<link rel="stylesheet" type="text/css" href="css/audio.css">
