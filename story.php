@@ -2,6 +2,18 @@
 $dir = sys_get_temp_dir();
 session_save_path($dir);
 session_start();
+
+echo '<script type=\"text/javascript\">
+ $(document).ready(function(){
+            
+            $(\'.audio_control\').ttwMusicPlayer(myPlaylist, {
+                autoplay:true, 
+                jPlayer:{
+                    swfPath:\'/plugin/jquery-jplayer\' //You need to override the default swf path any time the directory structure changes
+                }
+            });
+        });
+    	</script>';
 ?>
 
 <html>
@@ -14,6 +26,13 @@ session_start();
 		<link rel="stylesheet" href="css/slider.css" type="text/css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 		<script src="js/jquery.flexslider-min.js"></script>
+                	<link rel="stylesheet" type="text/css" href="../plugin/css/style.css">
+    	<link rel="stylesheet" type="text/css" href="css/audio.css">
+    	<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
+    	<script type="text/javascript" src="../plugin/jquery-jplayer/jquery.jplayer.js"></script>
+    	<script type="text/javascript" src="../plugin/ttw-music-player-min.js"></script>
+    	<script type="text/javascript" src="js/myplaylist.js"></script>
+    	
 		<style>
 		 html,body {
 	            background: url(images/story.jpg) no-repeat center center fixed;
@@ -22,11 +41,31 @@ session_start();
 	            -o-background-size: cover;      /* Opera*/
 	            background-size: cover;         /* Generic*/
 	        }
+                .google_translate{
+            display: block;
+            top: 5px;
+            float: right;    
+            background: #fdfdfd;
+            border: 1px solid #ccc;
+
+        }
 	    </style>
 		
     </head>
 
     <body>
+        <!-- <script type="text/javascript">
+        $(document).ready(function(){
+            
+            $('.audio_control').ttwMusicPlayer(myPlaylist, {
+                autoplay:false, 
+                jPlayer:{
+                    swfPath:'../plugin/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
+                }
+            });
+        });
+    </script>-->
+
         <!-- Navigation -->
        	<div class="container">
 	        <!-- Navigation bar -->
@@ -40,7 +79,16 @@ session_start();
 	                <li><a href="logoff.php">Sign Off</a></li></ul>
 	            <a href="https://www.facebook.com/citystorysf"title="Become a fan"><img src="facebook.jpeg" height="50" width="50"></a>
 	        </nav>
-	    </div><br><br><br><br><br>
+	    </div>
+        <div id="google_translate_element" class="google_translate"></div>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+        <br><br><br><br><br>
 		<script>
 		$(document).ready(function () {
 			$('.flexslider').flexslider({

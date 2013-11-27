@@ -23,6 +23,14 @@ ob_start();
                 -o-background-size: cover;      /* Opera*/
                 background-size: cover;         /* Generic*/
             }
+            .google_translate{
+            display: block;
+            top: 5px;
+            float: right;    
+            background: #fdfdfd;
+            border: 1px solid #ccc;
+
+        }
         </style>
 
 
@@ -40,7 +48,16 @@ ob_start();
                     <li><a href="logoff.php">Sign Off</a></li></ul>
                 <a href="https://www.facebook.com/citystorysf"title="Become a fan"><img src="facebook.jpeg" height="50" width="50"></a>
             </nav>
-        </div><br><br><br><br><br>
+        </div>
+        <div id="google_translate_element" class="google_translate"></div>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+        <br><br><br><br><br>
 
         <!-- Navigation -->
         <div div class="well span7" align="center" style="float:none; margin:0 auto">

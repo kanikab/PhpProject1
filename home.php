@@ -29,10 +29,26 @@ session_start();
 	     margin-right: auto;
 	     margin-left: auto;
 	}
+        .google_translate{
+            display: block;
+            top: 5px;
+            float: right;    
+            background: #fdfdfd;
+            border: 1px solid #ccc;
+
+        }
 	</style>
 
 </head>
 <body>
+    <div id="google_translate_element" class="google_translate"></div>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
       <script src="bootstrap/js/bootstrap.js"></script>
 		&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
 	<div class="container-fluid">
