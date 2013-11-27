@@ -3,18 +3,6 @@ $dir = sys_get_temp_dir();
 session_save_path($dir);
 session_start();
 
-echo '<script type=\"text/javascript\">
- $(document).ready(function(){
-            
-            $(\'.audio_control\').ttwMusicPlayer(myPlaylist, {
-            
-                autoplay:true, 
-                jPlayer:{
-                    swfPath:\'/plugin/jquery-jplayer\' //You need to override the default swf path any time the directory structure changes
-                }
-            });
-        });
-    	</script>';
 ?>
 
 <html>
@@ -30,9 +18,6 @@ echo '<script type=\"text/javascript\">
                 	<link rel="stylesheet" type="text/css" href="../plugin/css/style.css">
     	<link rel="stylesheet" type="text/css" href="css/audio.css">
     	<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
-    	<script type="text/javascript" src="../plugin/jquery-jplayer/jquery.jplayer.js"></script>
-    	<script type="text/javascript" src="../plugin/ttw-music-player-min.js"></script>
-    	<script type="text/javascript" src="js/myplaylist.js"></script>
     	
 		<style>
 		 html,body {
@@ -88,33 +73,7 @@ echo '<script type=\"text/javascript\">
 		});
 		</script>
                 
-                <div id = "audio" class = "audio_control"> </div>
- <!-- audio control -->
-		<link rel="stylesheet" type="text/css" href="./plugin/css/style.css">
-    	<link rel="stylesheet" type="text/css" href="css/audio.css">
-    	<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
-    	<script type="text/javascript" src="./plugin/jquery-jplayer/jquery.jplayer.js"></script>
-    	<script type="text/javascript" src="./plugin/ttw-music-player-min.js"></script>
-    	<script type="text/javascript" src="js/myplaylist.js"></script>
-    	<script type="text/javascript">
-        $(document).ready(function(){
-            
-            $('.audio_control').ttwMusicPlayer(myPlaylist, {
-                autoplay:true, 
-                jPlayer:{
-                    swfPath:'./plugin/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
-                }
-            });
-        });
-    	</script>
-		<style>
-  		#audio {
-    		position: fixed;
-    		top:30px;
-    		left: 0;
-    		z-index: 10000000000;
-  		}
-		</style>
+                
        
        
     </body>
