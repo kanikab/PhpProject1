@@ -165,8 +165,8 @@ ob_start();
                             if ($_FILES["file"]["error"] > 0) {
                                 echo "Error: " . $_FILES["file"]["error"] . "<br>";
                             } else {
-                                //$username = $_SESSION['username'];
-                                $username = "kanikabhtia@gmail.com";
+                                $username = $_SESSION['username'];
+                                
                                 $bucket = 'bestview-bucket';
                                 $location = $_POST['place'];
                                 $loc = explode('|', $location);
@@ -189,7 +189,9 @@ ob_start();
                                 fclose($fp);
                                 $sql = "INSERT into content VALUES ('" . $loc[0] . "','" . $fname . "','" . $date . "','" . $content . "','" . $type . "')";
                                 if (!mysql_query($sql)) {
-                                    die('Error: ' . mysql_error());      
+                                    echo "<script type='text/javascript'>
+                                        alert(\"Something went wrong while uploading your file... sorry. \");
+                                      </script>";     
                                 } 
 
                                 //create a new bucket

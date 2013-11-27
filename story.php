@@ -7,6 +7,7 @@ echo '<script type=\"text/javascript\">
  $(document).ready(function(){
             
             $(\'.audio_control\').ttwMusicPlayer(myPlaylist, {
+            
                 autoplay:true, 
                 jPlayer:{
                     swfPath:\'/plugin/jquery-jplayer\' //You need to override the default swf path any time the directory structure changes
@@ -54,18 +55,7 @@ echo '<script type=\"text/javascript\">
     </head>
 
     <body>
-        <!-- <script type="text/javascript">
-        $(document).ready(function(){
-            
-            $('.audio_control').ttwMusicPlayer(myPlaylist, {
-                autoplay:false, 
-                jPlayer:{
-                    swfPath:'../plugin/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
-                }
-            });
-        });
-    </script>-->
-
+       
         <!-- Navigation -->
        	<div class="container">
 	        <!-- Navigation bar -->
