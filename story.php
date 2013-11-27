@@ -18,9 +18,6 @@ session_start();
                 	<link rel="stylesheet" type="text/css" href="../plugin/css/style.css">
     	<link rel="stylesheet" type="text/css" href="css/audio.css">
     	<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
-    	<script type="text/javascript" src="../plugin/jquery-jplayer/jquery.jplayer.js"></script>
-    	<script type="text/javascript" src="../plugin/ttw-music-player-min.js"></script>
-    	<script type="text/javascript" src="js/myplaylist.js"></script>
     	
 		<style>
 		 html,body {
@@ -75,6 +72,10 @@ session_start();
 			});
 		});
 		</script>
+                
+                
+       
+       
     </body>
 </html>
 <?php
