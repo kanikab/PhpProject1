@@ -94,8 +94,7 @@ echo "<div class=\"flexslider\">";
 foreach ($bucket_contents as $file) {
     $fname = $file['name'];
     $place = split("____", $fname);
-    //$loc = $_SESSION["location"]; 
-    $loc = "Delhi";
+    $loc = $_SESSION["location"]; 
     if (strtolower($place[0]) == strtolower($loc)) {
         $furl = "https://bestview-bucket.s3.amazonaws.com/" . $fname;
         //output a link to the file
