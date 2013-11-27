@@ -1,8 +1,13 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 173d4893eacd3d0a250c90abe9af400ce68912f7
 <?php
 $dir = sys_get_temp_dir();
 session_save_path($dir);
 session_start();
 
+<<<<<<< HEAD
 echo '<script type=\"text/javascript\">
  $(document).ready(function(){
             
@@ -15,6 +20,8 @@ echo '<script type=\"text/javascript\">
             });
         });
     	</script>';
+=======
+>>>>>>> 173d4893eacd3d0a250c90abe9af400ce68912f7
 ?>
 
 <html>
@@ -30,9 +37,12 @@ echo '<script type=\"text/javascript\">
                 	<link rel="stylesheet" type="text/css" href="../plugin/css/style.css">
     	<link rel="stylesheet" type="text/css" href="css/audio.css">
     	<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
+<<<<<<< HEAD
     	<script type="text/javascript" src="../plugin/jquery-jplayer/jquery.jplayer.js"></script>
     	<script type="text/javascript" src="../plugin/ttw-music-player-min.js"></script>
     	<script type="text/javascript" src="js/myplaylist.js"></script>
+=======
+>>>>>>> 173d4893eacd3d0a250c90abe9af400ce68912f7
     	
 		<style>
 		 html,body {
@@ -87,6 +97,7 @@ echo '<script type=\"text/javascript\">
 			});
 		});
 		</script>
+<<<<<<< HEAD
         <!-- audio control -->        
         <div id = "audio" class = "audio_control"> </div>
     
@@ -115,6 +126,10 @@ echo '<script type=\"text/javascript\">
     		z-index: 10000000000;
   		}
 		</style>
+=======
+                
+                
+>>>>>>> 173d4893eacd3d0a250c90abe9af400ce68912f7
        
        
     </body>
@@ -149,6 +164,10 @@ foreach ($bucket_contents as $file) {
     }
 }
 echo "</div></div>";
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 173d4893eacd3d0a250c90abe9af400ce68912f7
 <?php
 $dir = sys_get_temp_dir();
 session_save_path($dir);
@@ -300,6 +319,7 @@ foreach ($bucket_contents as $file) {
     }
 }
 echo "</div></div>";
+<<<<<<< HEAD
 
 
 
@@ -341,3 +361,7 @@ echo "</div></div>";
 
 
 
+=======
+>>>>>>> c884376e2652b1cc5a87a7d75ca4605d9fa6fe54
+?>
+>>>>>>> 173d4893eacd3d0a250c90abe9af400ce68912f7
