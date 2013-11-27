@@ -2,7 +2,6 @@
 $dir = sys_get_temp_dir();
 session_save_path($dir);
 session_start();
-
 ?>
 
 <html>
@@ -11,50 +10,47 @@ session_start();
         <title>Citystory</title>
 
         <!-- CSS -->
-		 <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
-		<link rel="stylesheet" href="css/slider.css" type="text/css">
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-		<script src="js/jquery.flexslider-min.js"></script>
-                	<link rel="stylesheet" type="text/css" href="../plugin/css/style.css">
-    	<link rel="stylesheet" type="text/css" href="css/audio.css">
-    	<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
-    	
-		<style>
-		 html,body {
-	            background: url(images/story.jpg) no-repeat center center fixed;
-	            -webkit-background-size: cover; /* For WebKit*/
-	            -moz-background-size: cover;    /* Mozilla*/
-	            -o-background-size: cover;      /* Opera*/
-	            background-size: cover;         /* Generic*/
-	        }
-                .google_translate{
-            display: block;
-            top: 5px;
-            float: right;    
-            background: #fdfdfd;
-            border: 1px solid #ccc;
+        <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="css/slider.css" type="text/css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <script src="js/jquery.flexslider-min.js"></script>
 
-        }
-	    </style>
-		
+        <style>
+            html,body {
+                background: url(images/story.jpg) no-repeat center center fixed;
+                -webkit-background-size: cover; /* For WebKit*/
+                -moz-background-size: cover;    /* Mozilla*/
+                -o-background-size: cover;      /* Opera*/
+                background-size: cover;         /* Generic*/
+            }
+            .google_translate{
+                display: block;
+                top: 5px;
+                float: right;    
+                background: #fdfdfd;
+                border: 1px solid #ccc;
+
+            }
+        </style>
+
     </head>
 
     <body>
-       
+
         <!-- Navigation -->
        	<div class="container">
-	        <!-- Navigation bar -->
-	        <nav class="navbar navbar-inner navbar-fixed-top navbar-inverse" role="navigation">
-	            <ul class="nav navbar-nav nav-pills">
-	                <li><img src="images/logo.jpeg" alt="Citystory" width="100" height="100"></li>
-	                <li ><a href="globe.html">Globe</a></li>
-	                <li><a href="profile.php">Profile</a></li>
-	                <li class="active"><a href="albums.php">Albums</a></li>
-	                <li><a href="fileupload.php">Upload</a></li>
-	                <li><a href="logoff.php">Sign Off</a></li></ul>
-	            <a href="https://www.facebook.com/citystorysf"title="Become a fan"><img src="facebook.jpeg" height="50" width="50"></a>
-	        </nav>
-	    </div>
+            <!-- Navigation bar -->
+            <nav class="navbar navbar-inner navbar-fixed-top navbar-inverse" role="navigation">
+                <ul class="nav navbar-nav nav-pills">
+                    <li><img src="images/logo.jpeg" alt="Citystory" width="100" height="100"></li>
+                    <li ><a href="globe.html">Globe</a></li>
+                    <li><a href="profile.php">Profile</a></li>
+                    <li class="active"><a href="albums.php">Albums</a></li>
+                    <li><a href="fileupload.php">Upload</a></li>
+                    <li><a href="logoff.php">Sign Off</a></li></ul>
+                <a href="https://www.facebook.com/citystorysf"title="Become a fan"><img src="facebook.jpeg" height="50" width="50"></a>
+            </nav>
+        </div>
         <div id="google_translate_element" class="google_translate"></div>
         <script type="text/javascript">
             function googleTranslateElementInit() {
@@ -62,20 +58,20 @@ session_start();
             }
         </script>
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script src="bootstrap/js/bootstrap.js"></script>
+        <script src="bootstrap/js/bootstrap.js"></script>
         <br><br><br><br><br>
-		<script>
-		$(document).ready(function () {
-			$('.flexslider').flexslider({
-				animation: 'fade',
-				controlsContainer: '.flexslider'
-			});
-		});
-		</script>
-                
-                
-       
-       
+        <script>
+            $(document).ready(function() {
+                $('.flexslider').flexslider({
+                    animation: 'fade',
+                    controlsContainer: '.flexslider'
+                });
+            });
+        </script>
+
+
+
+
     </body>
 </html>
 <?php
@@ -93,18 +89,19 @@ if (!defined('awsSecretKey'))
 $s3 = new S3(awsAccessKey, awsSecretKey);
 $bucket = 'bestview-bucket';
 $bucket_contents = $s3->getBucket($bucket);
-	echo "<div class=\"flex-container\">";
-	 echo "<div class=\"flexslider\">";
+echo "<div class=\"flex-container\">";
+echo "<div class=\"flexslider\">";
 foreach ($bucket_contents as $file) {
     $fname = $file['name'];
     $place = split("____", $fname);
-    $loc = $_SESSION["location"]; 
+    //$loc = $_SESSION["location"]; 
+    $loc = "Delhi";
     if (strtolower($place[0]) == strtolower($loc)) {
-      $furl = "https://bestview-bucket.s3.amazonaws.com/" . $fname;
+        $furl = "https://bestview-bucket.s3.amazonaws.com/" . $fname;
         //output a link to the file
-			       echo "<ul class=\"slides\">";
-		           echo "<li>";
-			       echo "<img src=\"$furl\"/> </a> </li> </ul>";
+        echo "<ul class=\"slides\">";
+        echo "<li>";
+        echo "<img src=\"$furl\"/></li></ul>";
     }
 }
 echo "</div></div>";

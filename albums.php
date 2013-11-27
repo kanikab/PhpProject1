@@ -13,27 +13,27 @@ ob_start();
 
         <!-- CSS -->
         <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
-		<link rel="stylesheet" href="css/slider.css" type="text/css">
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-		<script src="js/jquery.flexslider-min.js"></script>
-		<style>
-		 html,body {
-	            background: url(images/story.jpg) no-repeat center center fixed;
-	            -webkit-background-size: cover; /* For WebKit*/
-	            -moz-background-size: cover;    /* Mozilla*/
-	            -o-background-size: cover;      /* Opera*/
-	            background-size: cover;         /* Generic*/
-	        }
-                .google_translate{
-            display: block;
-            top: 5px;
-            float: right;    
-            background: #fdfdfd;
-            border: 1px solid #ccc;
+        <link rel="stylesheet" href="css/slider.css" type="text/css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <script src="js/jquery.flexslider-min.js"></script>
+        <style>
+            html,body {
+                background: url(images/story.jpg) no-repeat center center fixed;
+                -webkit-background-size: cover; /* For WebKit*/
+                -moz-background-size: cover;    /* Mozilla*/
+                -o-background-size: cover;      /* Opera*/
+                background-size: cover;         /* Generic*/
+            }
+            .google_translate{
+                display: block;
+                top: 5px;
+                float: right;    
+                background: #fdfdfd;
+                border: 1px solid #ccc;
 
-        }
-	    </style>
-       
+            }
+        </style>
+
     </head>
 
     <body>
@@ -58,16 +58,16 @@ ob_start();
             }
         </script>
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script src="bootstrap/js/bootstrap.js"></script>
+        <script src="bootstrap/js/bootstrap.js"></script>
         <br><br><br><br><br>
-       		<script>
-			$(document).ready(function () {
-				$('.flexslider').flexslider({
-					animation: 'fade',
-					controlsContainer: '.flexslider'
-				});
-			});
-			</script>
+        <script>
+            $(document).ready(function() {
+                $('.flexslider').flexslider({
+                    animation: 'fade',
+                    controlsContainer: '.flexslider'
+                });
+            });
+        </script>
     </body>
 </html>
 
@@ -92,24 +92,25 @@ $result = mysql_query($sql);
 if (!$result) {
     die('Error: ' . mysql_error());
 } else {
-   
+    echo "<div class=\"flex-container\">";
+    echo "<div class=\"flexslider\">";
     while ($row = mysql_fetch_array($result)) {
-   
+
         $name = split("____", $row['name']);
         if ($name[0] == $_SESSION['username']) {
-                 foreach ($bucket_contents as $file) {
+            foreach ($bucket_contents as $file) {
                 $fname = $file['name'];
                 $names = split("____", $fname);
                 if ($names[1] == $name[1]) {
                     $furl = "https://bestview-bucket.s3.amazonaws.com/" . $fname;
                     //output a link to the file
-                    echo "<img src = \"$furl\">";
+                    echo "<ul class=\"slides\">";
+                    echo "<li>";
+                    echo "<img src = \"$furl\"></li></ul>";
                     //echo "<a href=\"$furl\">$fname</a><br />";
                 }
             }
-            
         }
-        
     }
 }
 ?>
