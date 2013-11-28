@@ -92,7 +92,6 @@ session_start();
     		position: fixed;
     		top:30px;
     		left: 0;
-    		z-index: 10000000000;
   		}
 	</style>
 
