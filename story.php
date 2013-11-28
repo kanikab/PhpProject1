@@ -94,8 +94,8 @@ if (!defined('awsSecretKey'))
 $s3 = new S3(awsAccessKey, awsSecretKey);
 $bucket = 'bestview-bucket';
 $bucket_contents = $s3->getBucket($bucket);
-echo "<div id=\"container\">";
-echo "<div id=\"slider\">";
+echo "<div id=\"slide_container\">";
+echo "<div id=\"slider\" style=\"text-align:center; position:relative; margin: 0 auto;\">";
 foreach ($bucket_contents as $file) {
     $fname = $file['name'];
     $place = split("____", $fname);

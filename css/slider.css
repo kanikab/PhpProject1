@@ -1,11 +1,10 @@
 body {
-    font:80% Trebuchet MS, Arial, Helvetica, Sans-Serif;
-    color:#333;
-    line-height:180%;   
-    padding:0;
-    position:fixed;
-    top:100px;
-    right:250px;
+        font:80% Trebuchet MS, Arial, Helvetica, Sans-Serif;
+        color:#333;
+        line-height:180%;   
+        padding:0;
+        position:relative;
+	margin:0;
 }
 h1, h2, h3, h4, h5 {
     margin: 0 0 15px 0;
@@ -34,6 +33,8 @@ a:hover {
 }
 img {
     border:none;
+    margin-left: auto;
+    margin-right: auto;
 }
 pre {
     margin-top:-16px;
@@ -51,13 +52,14 @@ body {
     margin:0;
     padding:0;
 }
-#container {
-    margin:0 auto;
-    position:relative;
-    text-align:left;
+#slide_container {
+    text-align:center;
     width:696px;
     background:transparent;
-    margin-bottom:2em;
+    margin:0;
+    position:fixed;
+    top: 150px;
+    left:200px;
 }
 /* Uncomment this if you wan't to only have 1 visible slide before the javascript kicks in.
 #slider li {display:none;}	
