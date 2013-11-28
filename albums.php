@@ -19,7 +19,7 @@ ob_start();
  
         <style>
             html,body {
-                background: url(images/story3.jpg) no-repeat center center fixed;
+                background: url(images/story.jpg) no-repeat center center fixed;
                 -webkit-background-size: cover; /* For WebKit*/
                 -moz-background-size: cover;    /* Mozilla*/
                 -o-background-size: cover;      /* Opera*/
