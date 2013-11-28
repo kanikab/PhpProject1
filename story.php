@@ -13,7 +13,8 @@ session_start();
         <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="css/slider.css" type="text/css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-        <script src="js/jquery.flexslider-min.js"></script>
+        <link rel="STYLESHEET" type="text/css" href="css/slider.css">
+       
 
         <style>
             html,body {
@@ -60,14 +61,18 @@ session_start();
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
         <br><br><br><br><br>
-        <script>
-            $(document).ready(function() {
-                $('.flexslider').flexslider({
-                    animation: 'fade',
-                    controlsContainer: '.flexslider'
-                });
-            });
-        </script>
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  	<script type="text/javascript" src="js/jquery.sudoSlider.min.js"></script>
+        <script type="text/javascript">
+  		$(document).ready(function(){	
+  			var sudoSlider = $("#slider").sudoSlider({ 
+  			         effect: "fade",
+  			         auto:true,
+  			         prevNext:false
+  			      });
+  		});	
+  	</script>
         
 
 
@@ -90,8 +95,8 @@ if (!defined('awsSecretKey'))
 $s3 = new S3(awsAccessKey, awsSecretKey);
 $bucket = 'bestview-bucket';
 $bucket_contents = $s3->getBucket($bucket);
-echo "<div class=\"flex-container\">";
-echo "<div class=\"flexslider\">";
+echo "<div id=\"container\">";
+echo "<div id=\"slider\">";
 foreach ($bucket_contents as $file) {
     $fname = $file['name'];
     $place = split("____", $fname);
@@ -99,7 +104,7 @@ foreach ($bucket_contents as $file) {
     if (strtolower($place[0]) == strtolower($loc)) {
         $furl = "https://bestview-bucket.s3.amazonaws.com/" . $fname;
         //output a link to the file
-        echo "<ul class=\"slides\">";
+        echo "<ul>";
         echo "<li>";
         echo "<img src=\"$furl\"/></li></ul>";
     }
