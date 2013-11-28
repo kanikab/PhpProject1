@@ -11,9 +11,8 @@ session_start();
 
         <!-- CSS -->
         <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" href="css/slider.css" type="text/css">
+	<link rel="STYLESHEET" type="text/css" href="css/slider.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-        <link rel="STYLESHEET" type="text/css" href="css/slider.css">
        
 
         <style>
