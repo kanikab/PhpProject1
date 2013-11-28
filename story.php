@@ -99,8 +99,8 @@ session_start();
 		<style>
   		#audio {
     		position: fixed;
-    		top:30px;
-    		left: 0;
+    		top:100px;
+    		left:20px;
     		z-index: 10000000000;
   		}
 		</style>
