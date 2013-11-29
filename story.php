@@ -82,8 +82,8 @@ session_start();
 		<link rel="stylesheet" type="text/css" href="./plugin/css/style.css">
     	<link rel="stylesheet" type="text/css" href="css/audio.css">
     	<!--<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>-->
-    	<script type="text/javascript" src="./plugin/jquery-jplayer/jquery.jplayer.js"></script>
-    	<script type="text/javascript" src="./plugin/ttw-music-player-min.js"></script>
+    	<script type="text/javascript" src="plugin/jquery-jplayer/jquery.jplayer.js"></script>
+    	<script type="text/javascript" src="plugin/ttw-music-player-min.js"></script>
     	<script type="text/javascript" src="js/myplaylist.js"></script>
     	<script type="text/javascript">
         $(document).ready(function(){
@@ -91,7 +91,7 @@ session_start();
             $('.audio_control').ttwMusicPlayer(myPlaylist, {
                 autoplay:true, 
                 jPlayer:{
-                    swfPath:'./plugin/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
+                    swfPath:'plugin/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
                 }
             });
         });
@@ -99,7 +99,7 @@ session_start();
 		<style>
   		#audio {
     		position: fixed;
-    		top:70px;
+    		top:50px;
     		left:80px;
     		z-index: 10000000000;
   		}
