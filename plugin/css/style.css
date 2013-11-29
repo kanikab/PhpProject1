@@ -1,8 +1,8 @@
 
 
 .ttw-music-player {
-    width: 450px;
-    margin: 4px auto;
+    width: 370px;
+    margin: 5px auto;
     font-family: 'Lato', arial, sans-serif;
 }
 
@@ -59,22 +59,22 @@
 
 /** Track Info **/
 .ttw-music-player .track-info {
-    width: 300px;
-    margin: 3px 0 0 3px;
+    width: 215px;
+    margin: 10px 0 0 10px;
     float: left;
     font-size: 12px;
 }
 
 .ttw-music-player .track-info p {
-    margin: 0 0 4px 0;
+    margin: 0 0 5px 0;
 }
 
 .ttw-music-player .player .title {
     color: #efefef;
-    text-shadow: 0 0.5px 0.5px rgba(0, 0, 0, .8);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .8);
     font-family: 'Lato Bold', arial, sans-serif;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .ttw-music-player .artist-outer {
@@ -86,7 +86,7 @@
 .ttw-music-player .artist {
     color: #999;
     font-family: 'Lato', arial, sans-serif;
-    margin-left: 3px;
+    margin-left: 4px;
 }
 
 .ttw-music-player .rating {
@@ -218,7 +218,6 @@
     background: transparent url(../images/tracklist-bg.png) repeat 0 0 scroll;
     color: #999;
     font-size: 12px;
-    visibility: hidden;
 }
 
 .ttw-music-player .tracklist ol {
@@ -250,7 +249,7 @@
 
 
 .ttw-music-player .tracklist .title {
-    width: 150px;
+    width: 164px;
     display: inline-block;
     padding: 0 0 0 5px;
     cursor: pointer;
