@@ -118,7 +118,7 @@ function initCB(instance) {
    
 
 
-    document.getElementById('installed-plugin-version').innerHTML = ge.getPluginVersion().toString();
+    //document.getElementById('installed-plugin-version').innerHTML = ge.getPluginVersion().toString();
 }
 
 function failureCB(errorCode) {}
