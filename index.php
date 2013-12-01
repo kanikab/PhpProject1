@@ -4,7 +4,7 @@ session_save_path($dir);
 session_start();
 ?>
 <!doctype html>
-
+<html manifest="bestview.appcache">
 <head>
 
     <!-- General Metas -->

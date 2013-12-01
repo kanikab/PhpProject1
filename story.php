@@ -5,6 +5,7 @@ session_start();
 ?>
 
 <html>
+    <html manifest="bestview.appcache">
     <head>
         <meta charset="utf-8">
         <title>Citystory</title>
