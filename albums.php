@@ -121,7 +121,7 @@ if (!$result) {
                     //output a link to the file
                     echo "<ul>";
                     echo "<li>";
-                    echo "<img src = \"$furl\"></li></ul>";
+                    echo "<img src = \"$furl\" alt=\“city story\”/></li></ul>";
                     //echo "<a href=\"$furl\">$fname</a><br />";
                 }
             }
