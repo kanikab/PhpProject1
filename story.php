@@ -5,7 +5,6 @@ session_start();
 ?>
 
 <html>
-    <html manifest="bestview.appcache">
     <head>
         <meta charset="utf-8">
        <meta name=”description” content=”CityStory is an application to time travel through photos of cities and consolidation of vacation spots”></meta>
@@ -82,7 +81,7 @@ session_start();
         
 <div id = "audio" class = "audio_control"> </div>
  <!-- audio control -->
-		<link rel="stylesheet" type="text/css" href="./plugin/css/style.css">
+	<link rel="stylesheet" type="text/css" href="./plugin/css/style.css">
     	<link rel="stylesheet" type="text/css" href="css/audio.css">
     	<!--<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>-->
     	<script type="text/javascript" src="plugin/jquery-jplayer/jquery.jplayer.js"></script>

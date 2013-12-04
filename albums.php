@@ -126,6 +126,7 @@ if (!$result) {
             }
         }
     }
+    echo "</div></div>";
     
 }
 ?>

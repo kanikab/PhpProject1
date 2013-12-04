@@ -7,14 +7,21 @@
  */
 
 var myPlaylist = [
+
     {
-        mp3:'mix/1.mp3',
-        oga:'mix/1.ogg',
-        title:'Sample',
-        artist:'Sample',
-        rating:4,
-        duration:'0:30',
-        cover:'mix/1.png'
+            mp3:'mix/UnderTheBridge.mp3',
+            title:'Under The Bridge',
+            artist:'Under The Bridge',
+            rating:4,
+            duration:'0:30',
+            cover:'mix/UnderTheBridge.jpg'
     },
-    
+    {
+            mp3:'mix/End_Of_May.mp3',
+            title:'End Of May',
+            artist:'End Of May',
+            rating:4,
+            duration:'4:05',
+            cover:'mix/End_Of_May.jpg'
+     }
 ];
