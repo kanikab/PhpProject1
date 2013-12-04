@@ -15,18 +15,15 @@ if ($users!="") {
 	$logoutUrl = $facebook->getLogoutUrl();
 	$femail=$user_profile["email"];
 	$newtoken=base64_encode($fuserid."::".$fusername);
-       
+     $_SESSION['username'] = $femail;
  
 	$msql = mysql_query("SELECT * FROM users WHERE email='".$femail."'" );
 
 	if(mysql_num_rows($msql)>0){
-		$sqlrow=mysql_fetch_object($msql);
-                $_SESSION['username'] = $femail;
-		header('Location:globe.html'); 
+      	header('Location:globe.html'); 
 	}
 	else{		
-		header('Location:register.php?token='.$newtoken);
-		exit;
+		header('Location:register.php');
 	}
 
   } catch (FacebookApiException $e) {

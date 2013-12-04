@@ -8,7 +8,9 @@ session_start();
     <html manifest="bestview.appcache">
     <head>
         <meta charset="utf-8">
-        <title>Citystory</title>
+       <meta name=”description” content=”CityStory is an application to time travel through photos of cities and consolidation of vacation spots”></meta>
+        <title>CityStory</title>
+
 
         <!-- CSS -->
         <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">

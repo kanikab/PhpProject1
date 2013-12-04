@@ -4,14 +4,13 @@ session_save_path($dir);
 session_start();
 ?>
 <!doctype html>
-<html manifest="bestview.appcache">
 <head>
 
     <!-- General Metas -->
     <meta charset="utf-8" />
     <meta name="google-translate-customization" content="dd6dc8d31eae27c9-1af41dda936d789b-g8a2fe6bb665c9411-1d"></meta>
-
-    <title>Citystory</title>
+	<meta name=”description” content=”CityStory is an application to time travel through photos of cities and consolidation of vacation spots”></meta>
+    <title>CityStory</title>
 
     <!-- Stylesheets -->
     <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -97,7 +96,7 @@ session_start();
                     }, {scope: 'publish_stream'});
                 }
             </script>  
-            <p style="text-align:left; margin-top:0px; margin-bottom:0px; padding:0px;">
+            <p style="text-align:left; margin-top:0px; margin-bottom:0px; padding:0px;"></p>
                 <img border="0" src="login_facebook.png" onClick="fblogin();" border="0" 
                      style="cursor:pointer">
                 <a href="register.php"><img src="rainbow.gif"></a></br></br>

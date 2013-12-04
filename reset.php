@@ -8,7 +8,8 @@ include 'rds_db.php';
 
             $pwd = $_POST["pwd"];
             $cpwd = $_POST["cpwd"];
-            $uname = $_SESSION["uname"];
+            //$uname = $_SESSION["uname"];
+            $uname = "kanikabhtia@gmail.com";
             if (chkpwd($pwd, $cpwd)) {
                 $password = md5($pwd);
                 $sql = "insert into users(password, email) values('$password', '$uname') on duplicate key update password = '$password'";
@@ -16,8 +17,11 @@ include 'rds_db.php';
                 if (!$result) {
                     echo 'error';
                 } else {
+                    echo 'there';
                     $row = mysql_affected_rows();
+                    echo $row;
                     if ($row == 2) {
+                        echo 'here';
                         echo "<script type='text/javascript'>
                           alert(\"Password Changed. Click on Home page.\");
                         </script>";
@@ -25,6 +29,9 @@ include 'rds_db.php';
                     }
                 }
             }
+ else {
+     header('location: pwdreset.php');
+ }
 
         function chkpwd($pwd, $cpwd) {
             $clen = strlen($cpwd);

@@ -66,9 +66,10 @@ ob_start();
                 <center><h2>Password Reset</h2> 
 
                     <p><form method="post" action="reset.php">
+                       
                         <p>New Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="pwd" required placeholder="password" maxlength="20"/> </p>
                         <p>Confirm Password   &nbsp;&nbsp;&nbsp;<input type="password" name="cpwd" required placeholder="confirm password" maxlength="20"/> </p>
-                        <input type="hidden" name="username" value="<?php $_GET['username'] ?>">
+                        <div id="text" style="color: red" > Enter valid password</div></br><br>
                         <p> <input type="submit" value="Submit" name="Submit" class ="btn-inverse" />
                             <input type="reset" value="Reset" name="Reset" />
                         </p>
@@ -81,10 +82,6 @@ ob_start();
         </div>
        
 
-        <?php
-        include 'rds_db.php';
-      // $_SESSION['uname'] = $_GET['username']; 
-       
-        ?>
+   
     </body>
 </html>
