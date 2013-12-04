@@ -53,6 +53,7 @@ session_start();
                     <li><a href="profile.php">Profile</a></li>
                     <li class="active"><a href="albums.php">Albums</a></li>
                     <li><a href="fileupload.php">Upload</a></li>
+                    <li><a href="https://www.surveymonkey.com/s/FBSYGL5">Feedback</a></li>
                     <li><a href="logoff.php">Sign Off</a></li></ul>
                 <a href="https://www.facebook.com/citystorysf"title="Become a fan"><img src="facebook.jpeg" height="50" width="50"></a>
             </nav>
