@@ -8,8 +8,8 @@ include 'rds_db.php';
 
             $pwd = $_POST["pwd"];
             $cpwd = $_POST["cpwd"];
-            //$uname = $_SESSION["uname"];
-            $uname = "kanikabhtia@gmail.com";
+            $uname = $_SESSION["uname"];
+            
             if (chkpwd($pwd, $cpwd)) {
                 $password = md5($pwd);
                 $sql = "insert into users(password, email) values('$password', '$uname') on duplicate key update password = '$password'";

@@ -83,7 +83,7 @@ ob_start();
 
         <?php
         include 'rds_db.php';
-      // $_SESSION['uname'] = $_GET['username']; 
+      $_SESSION['uname'] = $_GET['username']; 
        
         ?>
     </body>
